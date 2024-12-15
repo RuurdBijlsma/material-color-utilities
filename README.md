@@ -2,6 +2,8 @@
 
 This is a Python wrapper of an [existing C++ implementation](https://github.com/material-foundation/material-color-utilities/) of this utility.
 
+The API documentation for this package can be found at [dev_guide/api.md](dev_guide/api.md).
+
 ---
 
 Color is a powerful design tool and part of the Material system along with
