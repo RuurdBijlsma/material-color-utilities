@@ -1,0 +1,18 @@
+[project]
+name = "ruurd-colors"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Ruurd Bijlsma", email = "ruurd@bijlsma.dev" }
+]
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.scikit-build]
+minimum-version = "build-system.requires"
+build-dir = "build/{wheel_tag}"
+
+[build-system]
+requires = ["scikit-build-core>=0.10", "pybind11"]
+build-backend = "scikit_build_core.build"
