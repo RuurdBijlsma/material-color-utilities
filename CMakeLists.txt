@@ -19,10 +19,10 @@ set(ABSL_BUILD_SHARED OFF CACHE BOOL "" FORCE)
 add_subdirectory(abseil-cpp)
 
 # Add all .cc files from src/cpp
-file(GLOB_RECURSE CPP_SOURCES src/cpp/*.cc)
+file(GLOB_RECURSE CPP_SOURCES src/*.cc)
 
 # Create the Pybind11 module
-pybind11_add_module(_core MODULE src/main.cc ${CPP_SOURCES})
+pybind11_add_module(_core MODULE ${CPP_SOURCES})
 
 # Make #includes discoverable
 target_include_directories(_core PRIVATE src)
