@@ -25,89 +25,97 @@
 #include "cpp/palettes/tones.h"
 #include "cpp/utils/utils.h"
 
-namespace material_color_utilities {
+namespace material_color_utilities
+{
 
-struct DynamicScheme {
-  Hct source_color_hct;
-  Variant variant;
-  bool is_dark;
-  double contrast_level;
+  struct DynamicScheme
+  {
+    Hct source_color_hct;
+    Variant variant;
+    bool is_dark;
+    double contrast_level;
 
-  TonalPalette primary_palette;
-  TonalPalette secondary_palette;
-  TonalPalette tertiary_palette;
-  TonalPalette neutral_palette;
-  TonalPalette neutral_variant_palette;
-  TonalPalette error_palette;
+    TonalPalette primary_palette;
+    TonalPalette secondary_palette;
+    TonalPalette tertiary_palette;
+    TonalPalette neutral_palette;
+    TonalPalette neutral_variant_palette;
+    TonalPalette error_palette;
 
-  DynamicScheme(Hct source_color_hct, Variant variant, double contrast_level,
-                bool is_dark, TonalPalette primary_palette,
-                TonalPalette secondary_palette, TonalPalette tertiary_palette,
-                TonalPalette neutral_palette,
-                TonalPalette neutral_variant_palette,
-                std::optional<TonalPalette> error_palette = std::nullopt);
+    // Default constructor
+    DynamicScheme()
+        : source_color_hct(), variant(), is_dark(false), contrast_level(0.0),
+          primary_palette(), secondary_palette(), tertiary_palette(),
+          neutral_palette(), neutral_variant_palette(), error_palette() {}
 
-  static double GetRotatedHue(Hct source_color, std::vector<double> hues,
-                              std::vector<double> rotations);
+    DynamicScheme(Hct source_color_hct, Variant variant, double contrast_level,
+                  bool is_dark, TonalPalette primary_palette,
+                  TonalPalette secondary_palette, TonalPalette tertiary_palette,
+                  TonalPalette neutral_palette,
+                  TonalPalette neutral_variant_palette,
+                  std::optional<TonalPalette> error_palette = std::nullopt);
 
-  Argb SourceColorArgb() const;
+    static double GetRotatedHue(Hct source_color, std::vector<double> hues,
+                                std::vector<double> rotations);
 
-  Argb GetPrimaryPaletteKeyColor() const;
-  Argb GetSecondaryPaletteKeyColor() const;
-  Argb GetTertiaryPaletteKeyColor() const;
-  Argb GetNeutralPaletteKeyColor() const;
-  Argb GetNeutralVariantPaletteKeyColor() const;
-  Argb GetBackground() const;
-  Argb GetOnBackground() const;
-  Argb GetSurface() const;
-  Argb GetSurfaceDim() const;
-  Argb GetSurfaceBright() const;
-  Argb GetSurfaceContainerLowest() const;
-  Argb GetSurfaceContainerLow() const;
-  Argb GetSurfaceContainer() const;
-  Argb GetSurfaceContainerHigh() const;
-  Argb GetSurfaceContainerHighest() const;
-  Argb GetOnSurface() const;
-  Argb GetSurfaceVariant() const;
-  Argb GetOnSurfaceVariant() const;
-  Argb GetInverseSurface() const;
-  Argb GetInverseOnSurface() const;
-  Argb GetOutline() const;
-  Argb GetOutlineVariant() const;
-  Argb GetShadow() const;
-  Argb GetScrim() const;
-  Argb GetSurfaceTint() const;
-  Argb GetPrimary() const;
-  Argb GetOnPrimary() const;
-  Argb GetPrimaryContainer() const;
-  Argb GetOnPrimaryContainer() const;
-  Argb GetInversePrimary() const;
-  Argb GetSecondary() const;
-  Argb GetOnSecondary() const;
-  Argb GetSecondaryContainer() const;
-  Argb GetOnSecondaryContainer() const;
-  Argb GetTertiary() const;
-  Argb GetOnTertiary() const;
-  Argb GetTertiaryContainer() const;
-  Argb GetOnTertiaryContainer() const;
-  Argb GetError() const;
-  Argb GetOnError() const;
-  Argb GetErrorContainer() const;
-  Argb GetOnErrorContainer() const;
-  Argb GetPrimaryFixed() const;
-  Argb GetPrimaryFixedDim() const;
-  Argb GetOnPrimaryFixed() const;
-  Argb GetOnPrimaryFixedVariant() const;
-  Argb GetSecondaryFixed() const;
-  Argb GetSecondaryFixedDim() const;
-  Argb GetOnSecondaryFixed() const;
-  Argb GetOnSecondaryFixedVariant() const;
-  Argb GetTertiaryFixed() const;
-  Argb GetTertiaryFixedDim() const;
-  Argb GetOnTertiaryFixed() const;
-  Argb GetOnTertiaryFixedVariant() const;
-};
+    Argb SourceColorArgb() const;
 
-}  // namespace material_color_utilities
+    Argb GetPrimaryPaletteKeyColor() const;
+    Argb GetSecondaryPaletteKeyColor() const;
+    Argb GetTertiaryPaletteKeyColor() const;
+    Argb GetNeutralPaletteKeyColor() const;
+    Argb GetNeutralVariantPaletteKeyColor() const;
+    Argb GetBackground() const;
+    Argb GetOnBackground() const;
+    Argb GetSurface() const;
+    Argb GetSurfaceDim() const;
+    Argb GetSurfaceBright() const;
+    Argb GetSurfaceContainerLowest() const;
+    Argb GetSurfaceContainerLow() const;
+    Argb GetSurfaceContainer() const;
+    Argb GetSurfaceContainerHigh() const;
+    Argb GetSurfaceContainerHighest() const;
+    Argb GetOnSurface() const;
+    Argb GetSurfaceVariant() const;
+    Argb GetOnSurfaceVariant() const;
+    Argb GetInverseSurface() const;
+    Argb GetInverseOnSurface() const;
+    Argb GetOutline() const;
+    Argb GetOutlineVariant() const;
+    Argb GetShadow() const;
+    Argb GetScrim() const;
+    Argb GetSurfaceTint() const;
+    Argb GetPrimary() const;
+    Argb GetOnPrimary() const;
+    Argb GetPrimaryContainer() const;
+    Argb GetOnPrimaryContainer() const;
+    Argb GetInversePrimary() const;
+    Argb GetSecondary() const;
+    Argb GetOnSecondary() const;
+    Argb GetSecondaryContainer() const;
+    Argb GetOnSecondaryContainer() const;
+    Argb GetTertiary() const;
+    Argb GetOnTertiary() const;
+    Argb GetTertiaryContainer() const;
+    Argb GetOnTertiaryContainer() const;
+    Argb GetError() const;
+    Argb GetOnError() const;
+    Argb GetErrorContainer() const;
+    Argb GetOnErrorContainer() const;
+    Argb GetPrimaryFixed() const;
+    Argb GetPrimaryFixedDim() const;
+    Argb GetOnPrimaryFixed() const;
+    Argb GetOnPrimaryFixedVariant() const;
+    Argb GetSecondaryFixed() const;
+    Argb GetSecondaryFixedDim() const;
+    Argb GetOnSecondaryFixed() const;
+    Argb GetOnSecondaryFixedVariant() const;
+    Argb GetTertiaryFixed() const;
+    Argb GetTertiaryFixedDim() const;
+    Argb GetOnTertiaryFixed() const;
+    Argb GetOnTertiaryFixedVariant() const;
+  };
 
-#endif  // CPP_DYNAMICCOLOR_DYNAMIC_SCHEME_H_
+} // namespace material_color_utilities
+
+#endif // CPP_DYNAMICCOLOR_DYNAMIC_SCHEME_H_

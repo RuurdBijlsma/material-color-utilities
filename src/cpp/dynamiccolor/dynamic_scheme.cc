@@ -46,6 +46,8 @@ DynamicScheme::DynamicScheme(Hct source_color_hct, Variant variant,
       neutral_variant_palette(neutral_variant_palette),
       error_palette(error_palette.value_or(TonalPalette(25.0, 84.0))) {}
 
+      
+
 double DynamicScheme::GetRotatedHue(Hct source_color, std::vector<double> hues,
                                     std::vector<double> rotations) {
   double source_hue = source_color.get_hue();

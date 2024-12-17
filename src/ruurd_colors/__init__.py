@@ -1,3 +1,9 @@
-from ruurd_colors._core import hello_from_bin, quiz, argb_from_hex, hex_from_argb
+from ruurd_colors._core import argb_from_hex, hex_from_argb, theme_from_source_color, source_color_from_image, CustomColor
 
-__all__ = ["hello_from_bin", "quiz", "argb_from_hex", "hex_from_argb"]
+__all__ = [
+    "argb_from_hex",
+    "hex_from_argb",
+    "theme_from_source_color",
+    "source_color_from_image",
+    "CustomColor",
+]
