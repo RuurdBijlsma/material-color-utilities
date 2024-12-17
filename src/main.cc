@@ -10,8 +10,6 @@ material_color_utilities::Argb quiz(std::string hex)
   return material_color_utilities::ArgbFromHex(hex);
 }
 
-std::string hello_from_bin() { return "Hello from ruurd-colors!"; }
-
 namespace py = pybind11;
 
 // TODO alle classes die gebind worden moeten default constructor hebben lijkt t
