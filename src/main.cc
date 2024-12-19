@@ -11,6 +11,7 @@ namespace py = pybind11;
 // Ik moet ook alle types in Theme nog binden (scheme, tonalpallette, etc. etc., repr zou ook wel nice zijn toch).
 // snakecase instances in cpp weghalen, in bindings alleen snakecase hebben
 // alle argb -> binded versions to hex conversion
+// many fields are still black for some reason, look into this
 
 PYBIND11_MODULE(_core, m)
 {
