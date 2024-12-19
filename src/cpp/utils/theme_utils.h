@@ -24,6 +24,9 @@ namespace material_color_utilities
 
     struct ColorGroup
     {
+        // Default constructor
+        ColorGroup()
+            : color(), onColor(), colorContainer(), onColorContainer() {}
         Argb color;
         Argb onColor;
         Argb colorContainer;
@@ -41,53 +44,28 @@ namespace material_color_utilities
         ColorGroup dark;
     };
 
+    struct DynamicSchemeGroup
+    {
+        // Default constructor
+        DynamicSchemeGroup()
+            : light(),
+              dark() {}
+        DynamicScheme light;
+        DynamicScheme dark;
+    };
+
     struct Theme
     {
         // Default constructor
         Theme()
             : source(0),
-              schemes{DynamicScheme(), DynamicScheme()},
-              customColors()
-        {
-            palettes.primary = TonalPalette();
-            palettes.secondary = TonalPalette();
-            palettes.tertiary = TonalPalette();
-            palettes.neutral = TonalPalette();
-            palettes.neutralVariant = TonalPalette();
-            palettes.error = TonalPalette();
-        }
+              schemes(),
+              palettes(),
+              customColors() {}
 
-        Theme(int source, DynamicScheme light, DynamicScheme dark,
-              TonalPalette primary, TonalPalette secondary, TonalPalette tertiary,
-              TonalPalette neutral, TonalPalette neutralVariant, TonalPalette error,
-              std::vector<CustomColorGroup> customColors)
-            : source(source),
-              schemes{light, dark},
-              customColors(customColors)
-        {
-            palettes.primary = primary;
-            palettes.secondary = secondary;
-            palettes.tertiary = tertiary;
-            palettes.neutral = neutral;
-            palettes.neutralVariant = neutralVariant;
-            palettes.error = error;
-        }
-
-        int source;
-        struct
-        {
-            DynamicScheme light;
-            DynamicScheme dark;
-        } schemes;
-        struct
-        {
-            TonalPalette primary;
-            TonalPalette secondary;
-            TonalPalette tertiary;
-            TonalPalette neutral;
-            TonalPalette neutralVariant;
-            TonalPalette error;
-        } palettes;
+        Argb source;
+        DynamicSchemeGroup schemes;
+        DynamicScheme palettes;
         std::vector<CustomColorGroup> customColors;
     };
 

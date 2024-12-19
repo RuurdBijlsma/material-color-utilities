@@ -140,7 +140,17 @@ double RotationDirection(const double from, const double to) {
 // Converts a color in ARGB format to a hexadecimal string in lowercase.
 //
 // For instance: hex_from_argb(0xff012345) == "ff012345"
-std::string HexFromArgb(Argb argb) { return absl::StrCat(absl::Hex(argb)); }
+std::string HexFromArgb(Argb argb) {
+    return absl::StrCat(absl::Hex(argb, absl::kZeroPad8));
+}
+
+// Converts a color in ARGB format to an RGB hexadecimal string in lowercase (no alpha channel).
+//
+// For instance: hex_from_rgb(0xff012345) == "012345"
+std::string RgbHexFromArgb(Argb argb) {
+    uint32_t rgb = argb & 0x00FFFFFF; // Mask out the alpha channel
+    return absl::StrCat(absl::Hex(rgb, absl::kZeroPad6));
+}
 
 Argb IntFromLstar(const double lstar) {
   double y = YFromLstar(lstar);

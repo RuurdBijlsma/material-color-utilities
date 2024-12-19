@@ -17,6 +17,8 @@
 #ifndef CPP_DYNAMICCOLOR_VARIANT_H_
 #define CPP_DYNAMICCOLOR_VARIANT_H_
 
+#include <string>
+
 namespace material_color_utilities {
 
 enum class Variant {
@@ -30,6 +32,8 @@ enum class Variant {
   kRainbow,
   kFruitSalad,
 };
+
+std::string VariantToString(Variant variant);
 
 }  // namespace material_color_utilities
 

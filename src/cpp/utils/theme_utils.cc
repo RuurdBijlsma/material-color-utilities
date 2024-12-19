@@ -26,18 +26,18 @@ namespace material_color_utilities
 
         result.color = color;
         result.value = value;
-        result.light = {
-            tones.get(40),
-            tones.get(100),
-            tones.get(90),
-            tones.get(10),
-        };
-        result.dark = {
-            tones.get(80),
-            tones.get(20),
-            tones.get(30),
-            tones.get(90),
-        };
+        
+        result.light = ColorGroup();
+
+        result.light.color = tones.get(40);
+        result.light.onColor = tones.get(100);
+        result.light.colorContainer = tones.get(90);
+        result.light.onColorContainer = tones.get(10);
+
+        result.dark.color = tones.get(80);
+        result.dark.onColor = tones.get(20);
+        result.dark.colorContainer = tones.get(30);
+        result.dark.onColorContainer = tones.get(90);
 
         return result;
     }
