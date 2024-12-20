@@ -14,12 +14,42 @@ void bind_theme(py::module &m)
       .def(py::init<>()) // Default constructor
       .def_readwrite("source", &material_color_utilities::Theme::source)
       .def_readwrite("schemes", &material_color_utilities::Theme::schemes)
-      .def_readwrite("palettes", &material_color_utilities::Theme::palettes)
+      .def_readwrite("contrast_level", &material_color_utilities::Theme::contrastLevel)
+      .def_readwrite("variant", &material_color_utilities::Theme::variant)
       .def_readwrite("custom_colors", &material_color_utilities::Theme::customColors)
       .def("__repr__",
            [](const material_color_utilities::Theme &t)
            {
              return theme_repr(t);
+           });
+}
+
+void bind_hct(py::module &m)
+{
+  py::class_<material_color_utilities::Hct>(m, "Hct")
+      .def(py::init<>()) // Default constructor
+      .def(py::init<const material_color_utilities::Argb &>())
+      .def("get_argb", &material_color_utilities::Hct::ToInt)
+      .def("get_hue", &material_color_utilities::Hct::get_hue)
+      .def("get_chroma", &material_color_utilities::Hct::get_chroma)
+      .def("get_tone", &material_color_utilities::Hct::get_tone)  
+      .def("__repr__",
+           [](const material_color_utilities::Hct &h)
+           {
+             return hct_repr(h);
+           });
+}
+
+void bind_dynamic_scheme_group(py::module &m)
+{
+  py::class_<material_color_utilities::DynamicSchemeGroup>(m, "DynamicSchemeGroup")
+      .def(py::init<>()) // Default constructor
+      .def_readwrite("light", &material_color_utilities::DynamicSchemeGroup::light)
+      .def_readwrite("dark", &material_color_utilities::DynamicSchemeGroup::dark)
+      .def("__repr__",
+           [](const material_color_utilities::DynamicSchemeGroup &d)
+           {
+             return dynamic_scheme_group_repr(d);
            });
 }
 

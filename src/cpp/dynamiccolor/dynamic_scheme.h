@@ -116,6 +116,8 @@ namespace material_color_utilities
     Argb GetOnTertiaryFixedVariant() const;
   };
 
+  DynamicScheme GetSchemeInstance(Variant variant, double constrastLevel, Hct sourceColorHct, bool isDark);
+
 } // namespace material_color_utilities
 
 #endif // CPP_DYNAMICCOLOR_DYNAMIC_SCHEME_H_

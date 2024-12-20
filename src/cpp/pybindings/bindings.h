@@ -6,6 +6,8 @@
 namespace py = pybind11;
 
 void bind_theme(py::module &m);
+void bind_hct(py::module &m);
+void bind_dynamic_scheme_group(py::module &m);
 void bind_custom_color_group(py::module &m);
 void bind_custom_color(py::module &m);
 void bind_variant(py::module &m);

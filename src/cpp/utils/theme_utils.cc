@@ -26,7 +26,7 @@ namespace material_color_utilities
 
         result.color = color;
         result.value = value;
-        
+
         result.light = ColorGroup();
 
         result.light.color = tones.get(40);
@@ -42,23 +42,15 @@ namespace material_color_utilities
         return result;
     }
 
-    Theme ThemeFromSourceColor(Argb source, const std::vector<CustomColor> &customColors)
+    Theme ThemeFromSourceColor(Argb source, double contrastLevel, Variant variant, const std::vector<CustomColor> &customColors)
     {
         auto hctSource = Hct(source);
-        auto darkScheme = SchemeVibrant(hctSource, true);
-        auto lightScheme = SchemeVibrant(hctSource, false);
-        auto tones = TonalPalette(source);
-        // auto palette = CorePalette::of(source);
         Theme theme;
+        theme.contrastLevel = contrastLevel;
+        theme.variant = variant;
         theme.source = source;
-        theme.schemes.light = lightScheme;
-        theme.schemes.dark = darkScheme;
-        // theme.palettes.primary = palette.a1;
-        // theme.palettes.secondary = palette.a2;
-        // theme.palettes.tertiary = palette.a3;
-        // theme.palettes.neutral = palette.n1;
-        // theme.palettes.neutralVariant = palette.n2;
-        // theme.palettes.error = palette.error;
+        theme.schemes.light = GetSchemeInstance(variant, contrastLevel, hctSource, false);
+        theme.schemes.dark = GetSchemeInstance(variant, contrastLevel, hctSource, true);
 
         for (const auto &c : customColors)
         {
@@ -75,10 +67,10 @@ namespace material_color_utilities
         return 0xFFFF0000; // Dummy color, replace with actual image processing logic
     }
 
-    Theme ThemeFromImage(const std::string &image, const std::vector<CustomColor> &customColors)
+    Theme ThemeFromImage(const std::string &image, double contrastLevel, Variant variant, const std::vector<CustomColor> &customColors)
     {
         Argb source = SourceColorFromImage(image);
-        return ThemeFromSourceColor(source, customColors);
+        return ThemeFromSourceColor(source, contrastLevel, variant, customColors);
     }
 
 } // namespace material_color_utilities

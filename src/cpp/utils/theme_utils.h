@@ -7,6 +7,7 @@
 #include <unordered_map>
 #include <cpp/dynamiccolor/dynamic_scheme.h>
 #include <cpp/palettes/tones.h>
+#include <cpp/dynamiccolor/variant.h>
 
 namespace material_color_utilities
 {
@@ -60,12 +61,14 @@ namespace material_color_utilities
         Theme()
             : source(0),
               schemes(),
-              palettes(),
+              contrastLevel(0),
+              variant(Variant::kVibrant),
               customColors() {}
 
         Argb source;
+        double contrastLevel;
+        Variant variant;
         DynamicSchemeGroup schemes;
-        DynamicScheme palettes;
         std::vector<CustomColorGroup> customColors;
     };
 
@@ -82,9 +85,9 @@ namespace material_color_utilities
      */
     CustomColorGroup GetCustomColor(Argb source, const CustomColor &color);
 
-    Theme ThemeFromSourceColor(Argb source, const std::vector<CustomColor> &customColors = {});
+    Theme ThemeFromSourceColor(Argb source, double contrastLevel, Variant variant, const std::vector<CustomColor> &customColors = {});
 
-    Theme ThemeFromImage(const std::string &image, const std::vector<CustomColor> &customColors = {});
+    Theme ThemeFromImage(const std::string &image, double contrastLevel, Variant variant, const std::vector<CustomColor> &customColors = {});
 
 } // namespace material_color_utilities
 

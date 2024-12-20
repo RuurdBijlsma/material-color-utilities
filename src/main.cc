@@ -12,10 +12,13 @@ namespace py = pybind11;
 // snakecase instances in cpp weghalen, in bindings alleen snakecase hebben
 // alle argb -> binded versions to hex conversion
 // many fields are still black for some reason, look into this
+// ik denk dat veel default constructors wel weg kunnen ofzo? idk proberen
 
 PYBIND11_MODULE(_core, m)
 {
   bind_theme(m);
+  bind_hct(m);
+  bind_dynamic_scheme_group(m);
   bind_dynamic_scheme(m);
   bind_tonal_palette(m);
   bind_custom_color(m);
