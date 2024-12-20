@@ -9,25 +9,25 @@ namespace material_color_utilities
         switch (variant)
         {
         case Variant::kMonochrome:
-            return "kMonochrome";
+            return "MONOCHROME";
         case Variant::kNeutral:
-            return "kNeutral";
+            return "NEUTRAL";
         case Variant::kTonalSpot:
-            return "kTonalSpot";
+            return "TONALSPOT";
         case Variant::kVibrant:
-            return "kVibrant";
+            return "VIBRANT";
         case Variant::kExpressive:
-            return "kExpressive";
+            return "EXPRESSIVE";
         case Variant::kFidelity:
-            return "kFidelity";
+            return "FIDELITY";
         case Variant::kContent:
-            return "kContent";
+            return "CONTENT";
         case Variant::kRainbow:
-            return "kRainbow";
+            return "RAINBOW";
         case Variant::kFruitSalad:
-            return "kFruitSalad";
+            return "FRUITSALAD";
         default:
-            return "Unknown";
+            return "UNKNOWN";
         }
     }
 

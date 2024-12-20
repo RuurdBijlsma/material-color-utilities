@@ -10,6 +10,7 @@ from ruurd_colors._core import (
     TonalPalette,
     DynamicScheme,
     DynamicSchemeGroup,
+    Hct,
 )
 
 __all__ = [
@@ -24,4 +25,5 @@ __all__ = [
     "TonalPalette",
     "DynamicScheme",
     "DynamicSchemeGroup",
+    "Hct",
 ]
