@@ -4,6 +4,7 @@
 #include "cpp/utils/hex_utils.h"
 #include "cpp/utils/theme_utils.h"
 #include "cpp/pybindings/bindings.h"
+#include "cpp/utils/image_utils.h"
 #include <string>
 namespace py = pybind11;
 
@@ -31,4 +32,5 @@ PYBIND11_MODULE(_core, m)
   m.def("theme_from_source_color", &material_color_utilities::ThemeFromSourceColor, "Returns a theme from a source color.", py::arg("source"), py::arg("contrast_level"), py::arg("variant"), py::arg("custom_colors") = std::vector<material_color_utilities::CustomColor>());
   m.def("source_color_from_image", &material_color_utilities::ThemeFromImage, "Returns a theme from an image.", py::arg("image"), py::arg("contrast_level"), py::arg("variant"), py::arg("custom_colors") = std::vector<material_color_utilities::CustomColor>());
   m.def("source_color_from_image", &material_color_utilities::SourceColorFromImage, "Returns the source color from an image.", py::arg("image"));
+  m.def("process_2d_array", &material_color_utilities::Process2DArray, "Prints a 2D array.", py::arg("input"));
 }

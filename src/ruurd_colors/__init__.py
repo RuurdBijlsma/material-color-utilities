@@ -1,4 +1,4 @@
-from ruurd_colors._core import (
+from ruurd_colors._core import (  # type: ignore This is from the cpp package
     argb_from_hex,
     hex_from_argb,
     theme_from_source_color,
@@ -11,7 +11,10 @@ from ruurd_colors._core import (
     DynamicScheme,
     DynamicSchemeGroup,
     Hct,
+    process_2d_array,
 )
+
+from ruurd_colors.prepare_image import image_to_argb
 
 __all__ = [
     "argb_from_hex",
@@ -26,4 +29,6 @@ __all__ = [
     "DynamicScheme",
     "DynamicSchemeGroup",
     "Hct",
+    "image_to_argb",
+    "process_2d_array",
 ]
