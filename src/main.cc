@@ -9,6 +9,9 @@
 #include <string>
 namespace py = pybind11;
 
+#define STRINGIFY(x) #x
+#define MACRO_STRINGIFY(x) STRINGIFY(x)
+
 // TODO alle classes die gebind worden moeten default constructor hebben lijkt t
 // Ik moet ook alle types in Theme nog binden (scheme,tonalpallette, etc. etc., repr zou ook wel nice zijn toch).
 // snakecase instances in cpp weghalen, in bindings alleen snakecase hebben
@@ -33,18 +36,18 @@ PYBIND11_MODULE(_core, m)
         "Converts a hex color code string to its ARGB representation.",
         py::arg("hex"));
   m.def("hex_from_argb",
-        &material_color_utilities::HexFromArgb,
+        &material_color_utilities::RgbHexFromArgb,
         "Returns the hexadecimal representation of a color.",
         py::arg("argb"));
   m.def("theme_from_source_color",
         &material_color_utilities::ThemeFromSourceColor,
         "Returns a theme from a source color.",
         py::arg("source"), py::arg("contrast_level"), py::arg("variant"), py::arg("custom_colors") = std::vector<material_color_utilities::CustomColor>());
-  m.def("theme_from_image",
+  m.def("theme_from_array",
         &material_color_utilities::ThemeFromImage,
         "Returns a theme from an image.",
         py::arg("image"), py::arg("contrast_level"), py::arg("variant"), py::arg("custom_colors") = std::vector<material_color_utilities::CustomColor>());
-  m.def("prominent_colors_from_image",
+  m.def("prominent_colors_from_array",
         &material_color_utilities::ProminentColorsFromImage,
         "Returns the prominent colors from an image in the shape of a 2D array.",
         py::arg("image"), py::arg("max_colors") = 64);
@@ -52,4 +55,10 @@ PYBIND11_MODULE(_core, m)
         &material_color_utilities::GetContrastRatio,
         "Returns the contrast ratio of two colors.",
         py::arg("color1"), py::arg("color2"));
+
+#ifdef VERSION_INFO
+  m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);
+#else
+  m.attr("__version__") = "dev";
+#endif
 }

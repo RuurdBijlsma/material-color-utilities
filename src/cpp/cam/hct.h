@@ -53,7 +53,7 @@ class Hct {
    */
   Hct(double hue, double chroma, double tone);
 
-  
+
   // Default constructor
   Hct() : hue_(0.0), chroma_(0.0), tone_(0.0), argb_(0) {}
 
