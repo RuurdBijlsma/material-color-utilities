@@ -5,8 +5,6 @@ import pytest
 from ruurd_colors import (
     argb_from_hex,
     hex_from_argb,
-    theme_from_source_color,
-    theme_from_image,
     prominent_colors_from_image,
     get_contrast_ratio,
     CustomColor,
@@ -29,7 +27,7 @@ def test_hex_from_argb():
 
 def test_theme_from_source_color():
     custom_colors = [CustomColor(0xFF4285F4, "Google Blue", True)]
-    theme = theme_from_source_color(0xFFFC03A3, 3.0, Variant.MONOCHROME, custom_colors)
+    theme = Theme.from_source_color(0xFFFC03A3, 3.0, Variant.MONOCHROME, custom_colors)
     assert isinstance(theme, Theme)
     assert theme.source == 0xFFFC03A3
 
@@ -37,7 +35,7 @@ def test_theme_from_source_color():
 def test_theme_from_image(assets_folder: Path):
     image = PIL.Image.open(assets_folder / "test.jpg")
     custom_colors = [CustomColor(0xFF4285F4, "Google Blue", True)]
-    theme = theme_from_image(image, 4.0, Variant.EXPRESSIVE, custom_colors)
+    theme = Theme.from_image(image, 4.0, Variant.EXPRESSIVE, custom_colors)
     assert isinstance(theme, Theme)
 
 

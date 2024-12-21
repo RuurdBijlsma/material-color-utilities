@@ -29,6 +29,7 @@ PYBIND11_MODULE(_core, m)
   bind_tonal_palette(m);
   bind_custom_color(m);
   bind_custom_color_group(m);
+  bind_color_group(m);
   bind_variant(m);
 
   m.def("argb_from_hex",
@@ -39,14 +40,6 @@ PYBIND11_MODULE(_core, m)
         &material_color_utilities::RgbHexFromArgb,
         "Returns the hexadecimal representation of a color.",
         py::arg("argb"));
-  m.def("theme_from_source_color",
-        &material_color_utilities::ThemeFromSourceColor,
-        "Returns a theme from a source color.",
-        py::arg("source"), py::arg("contrast_level"), py::arg("variant"), py::arg("custom_colors") = std::vector<material_color_utilities::CustomColor>());
-  m.def("theme_from_array",
-        &material_color_utilities::ThemeFromImage,
-        "Returns a theme from an image.",
-        py::arg("image"), py::arg("contrast_level"), py::arg("variant"), py::arg("custom_colors") = std::vector<material_color_utilities::CustomColor>());
   m.def("prominent_colors_from_array",
         &material_color_utilities::ProminentColorsFromImage,
         "Returns the prominent colors from an image in the shape of a 2D array.",

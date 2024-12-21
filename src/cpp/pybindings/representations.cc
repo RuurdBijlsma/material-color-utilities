@@ -20,7 +20,7 @@ std::string theme_repr(const material_color_utilities::Theme &t)
 
 std::string argb_repr(const material_color_utilities::Argb &a)
 {
-  return "\"#" + material_color_utilities::RgbHexFromArgb(a) + "\"";
+  return material_color_utilities::RgbHexFromArgb(a) + "\"";
 }
 
 std::string bool_repr(const bool &b)
@@ -38,7 +38,6 @@ std::string hct_repr(const material_color_utilities::Hct &h)
   return "Hct(hue=" + std::to_string(h.get_hue()) +
          ", chroma=" + std::to_string(h.get_chroma()) +
          ", tone=" + std::to_string(h.get_tone()) + ")";
-  // return "\"#" + material_color_utilities::RgbHexFromArgb(h.ToInt()) + "\"";
 }
 
 std::string tonal_palette_repr(const material_color_utilities::TonalPalette &t)

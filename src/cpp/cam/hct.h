@@ -94,6 +94,13 @@ class Hct {
   Argb ToInt() const;
 
   /**
+   * Returns the color in hexadecimal string format.
+   *
+   * @return a string, representing the color in hexadecimal format.
+   */
+  std::string ToHex() const;
+
+  /**
    * Sets the hue of this color. Chroma may decrease because chroma has a
    * different maximum for any given hue and tone.
    *

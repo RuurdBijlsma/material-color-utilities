@@ -10,6 +10,7 @@ void bind_hct(py::module &m);
 void bind_dynamic_scheme_group(py::module &m);
 void bind_custom_color_group(py::module &m);
 void bind_custom_color(py::module &m);
+void bind_color_group(py::module &m);
 void bind_variant(py::module &m);
 void bind_tonal_palette(py::module &m);
 void bind_dynamic_scheme(py::module &m);

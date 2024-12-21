@@ -7,6 +7,10 @@
 #include <cpp/dynamiccolor/dynamic_scheme.h>
 #include <cpp/palettes/tones.h>
 #include <cpp/dynamiccolor/variant.h>
+#include <pybind11/pybind11.h>
+#include <pybind11/numpy.h>
+
+namespace py = pybind11;
 
 namespace material_color_utilities
 {
@@ -64,7 +68,11 @@ namespace material_color_utilities
               variant(Variant::kVibrant),
               customColors() {}
 
+        static Theme FromSourceColor(Argb source, double contrastLevel, Variant variant, const std::vector<CustomColor> &customColors={});
+        static Theme FromImage(py::array_t<Argb> image, double contrastLevel, Variant variant, const std::vector<CustomColor> &customColors={});
+
         Argb source;
+        std::string GetHexSource() const;
         double contrastLevel;
         Variant variant;
         DynamicSchemeGroup schemes;

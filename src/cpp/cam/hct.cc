@@ -34,6 +34,8 @@ double Hct::get_tone() const { return tone_; }
 
 Argb Hct::ToInt() const { return argb_; }
 
+std::string Hct::ToHex() const { return RgbHexFromArgb(argb_); }
+
 void Hct::set_hue(double new_hue) {
   SetInternalState(SolveToInt(new_hue, chroma_, tone_));
 }
