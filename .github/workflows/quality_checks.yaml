@@ -1,0 +1,39 @@
+name: Python Quality Checks
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  quality-checks:
+    name: Build, ruff, and test
+    runs-on: ${{ matrix.platform }}
+    strategy:
+      fail-fast: false
+      matrix:
+#        platform: [windows-latest, macos-latest, ubuntu-latest]
+        platform: [ubuntu-latest]
+        python-version: ["3.13"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+
+      - name: Set up Python
+        run: uv python install
+
+      - name: Install the project
+        run: uv sync --all-extras
+
+      - name: Run ruff
+        run: uv run ruff check .
+
+      - name: Run tests
+        run: uv run pytest tests/

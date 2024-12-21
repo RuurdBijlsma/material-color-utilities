@@ -29,8 +29,10 @@ repos:
     exclude: ^conda\.recipe/meta\.yaml$
   - id: debug-statements
   - id: end-of-file-fixer
+    exclude: ^(abseil-cpp)
   - id: mixed-line-ending
   - id: requirements-txt-fixer
+    exclude: ^(abseil-cpp)
   - id: trailing-whitespace
 
 # Check linting and style issues
@@ -40,14 +42,14 @@ repos:
     - id: ruff
       args: ["--fix", "--show-fixes"]
     - id: ruff-format
-      exclude: ^(docs)
+      exclude: ^(docs|abseil-cpp)
 
 # Changes tabs to spaces
 - repo: https://github.com/Lucas-C/pre-commit-hooks
   rev: v1.5.5
   hooks:
   - id: remove-tabs
-    exclude: ^(docs)
+    exclude: ^(docs|abseil-cpp)
 
 # CMake formatting
 - repo: https://github.com/cheshirekow/cmake-format-precommit
@@ -57,3 +59,4 @@ repos:
     additional_dependencies: [pyyaml]
     types: [file]
     files: (\.cmake|CMakeLists.txt)(.in)?$
+    exclude: ^(abseil-cpp)

@@ -1,4 +1,4 @@
-from material_color_utilities._core import (  # type: ignore This is from the cpp package
+from material_color_utilities._core import (  # type: ignore
     argb_from_hex,
     hex_from_argb,
     prominent_colors_from_array,

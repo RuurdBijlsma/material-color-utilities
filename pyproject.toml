@@ -12,6 +12,9 @@ dependencies = [
     "pillow>=11.0.0",
 ]
 
+[tool.ruff]
+exclude = ['abseil-cpp']
+
 [tool.scikit-build]
 minimum-version = "build-system.requires"
 build-dir = "build/{wheel_tag}"
