@@ -8,7 +8,6 @@ on:
 
 jobs:
   quality-checks:
-    name: Build, ruff, and test
     runs-on: ${{ matrix.platform }}
     strategy:
       fail-fast: false
