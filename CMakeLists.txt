@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.19)
 project(${SKBUILD_PROJECT_NAME} LANGUAGES CXX)
 
 # Compiler settings
@@ -12,7 +12,7 @@ set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build static libraries" FORCE)
 
 # Python bindings setup
 set(PYBIND11_FINDPYTHON ON)
-find_package(pybind11 CONFIG REQUIRED)
+add_subdirectory(pybind11)
 
 # Abseil setup
 add_subdirectory(abseil-cpp)
