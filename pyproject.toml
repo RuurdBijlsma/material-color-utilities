@@ -26,4 +26,5 @@ build-backend = "scikit_build_core.build"
 [dependency-groups]
 dev = [
     "pytest>=8.3.4",
+    "ruff>=0.8.4",
 ]
