@@ -10,7 +10,7 @@ namespace py = pybind11;
 
 namespace material_color_utilities
 {
-    std::vector<Argb> ProminentColorsFromImage(py::array_t<Argb> image, size_t max_colors)
+    std::vector<Argb> ProminentColorsFromImageArgb(py::array_t<Argb> image, size_t max_colors)
     {
         // Request a buffer info object from the array
         py::buffer_info buf_info = image.request();
@@ -27,10 +27,25 @@ namespace material_color_utilities
         std::vector<Argb> colors = RankedSuggestions(a.color_to_count);
         return colors;
     }
-
-    Argb SourceColorFromImage(py::array_t<Argb> image)
+    std::vector<std::string> ProminentColorsFromImage(py::array_t<Argb> image, size_t max_colors)
     {
-        auto prominent_colors = ProminentColorsFromImage(image);
+        auto colors = ProminentColorsFromImageArgb(image, max_colors);
+        std::vector<std::string> hex_colors;
+        for (auto color : colors)
+        {
+            hex_colors.push_back(RgbHexFromArgb(color));
+        }
+        return hex_colors;
+    }
+
+    Argb ArgbSourceColorFromImage(py::array_t<Argb> image)
+    {
+        auto prominent_colors = ProminentColorsFromImageArgb(image);
         return prominent_colors[0];
+    }
+
+    std::string SourceColorFromImage(py::array_t<Argb> image)
+    {
+        return RgbHexFromArgb(ArgbSourceColorFromImage(image));
     }
 } // namespace material_color_utilities

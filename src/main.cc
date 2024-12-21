@@ -44,6 +44,10 @@ PYBIND11_MODULE(_core, m)
         &material_color_utilities::ProminentColorsFromImage,
         "Returns the prominent colors from an image in the shape of a 2D array.",
         py::arg("image"), py::arg("max_colors") = 64);
+  m.def("prominent_colors_from_array_argb",
+        &material_color_utilities::ProminentColorsFromImageArgb,
+        "Returns the prominent colors from an image in the shape of a 2D array.",
+        py::arg("image"), py::arg("max_colors") = 64);
   m.def("get_contrast_ratio",
         &material_color_utilities::GetContrastRatio,
         "Returns the contrast ratio of two colors.",

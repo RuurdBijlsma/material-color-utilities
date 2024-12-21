@@ -1,14 +1,15 @@
 #ifndef CPP_UTIL_TYPES_H
 #define CPP_UTIL_TYPES_H
 
-#include "cpp/utils/utils.h"
 #include <vector>
 #include <string>
+#include <pybind11/pybind11.h>
+#include <pybind11/numpy.h>
 #include <cpp/dynamiccolor/dynamic_scheme.h>
 #include <cpp/palettes/tones.h>
 #include <cpp/dynamiccolor/variant.h>
-#include <pybind11/pybind11.h>
-#include <pybind11/numpy.h>
+#include "cpp/utils/utils.h"
+#include "cpp/utils/hex_utils.h"
 
 namespace py = pybind11;
 
@@ -20,8 +21,11 @@ namespace material_color_utilities
         CustomColor() : value(0), name(""), blend(false) {}
         CustomColor(const Argb &value, const std::string &name, const bool &blend)
             : value(value), name(name), blend(blend) {}
+        CustomColor(const std::string &value, const std::string &name, const bool &blend)
+            : value(ArgbFromHex(value)), name(name), blend(blend) {}
 
         Argb value;
+        std::string GetHexValue() const;
         std::string name;
         bool blend;
     };
@@ -35,6 +39,10 @@ namespace material_color_utilities
         Argb onColor;
         Argb colorContainer;
         Argb onColorContainer;
+        std::string GetHexColor() const;
+        std::string GetHexOnColor() const;
+        std::string GetHexColorContainer() const;
+        std::string GetHexOnColorContainer() const;
     };
 
     struct CustomColorGroup
@@ -43,6 +51,7 @@ namespace material_color_utilities
         CustomColorGroup()
             : color(), value(0), light(), dark() {}
         CustomColor color;
+        std::string GetHexValue() const;
         Argb value;
         ColorGroup light;
         ColorGroup dark;
@@ -68,8 +77,9 @@ namespace material_color_utilities
               variant(Variant::kVibrant),
               customColors() {}
 
-        static Theme FromSourceColor(Argb source, double contrastLevel, Variant variant, const std::vector<CustomColor> &customColors={});
-        static Theme FromImage(py::array_t<Argb> image, double contrastLevel, Variant variant, const std::vector<CustomColor> &customColors={});
+        static Theme FromSourceColorArgb(Argb source, double contrastLevel, Variant variant, const std::vector<CustomColor> &customColors = {});
+        static Theme FromSourceColor(std::string source, double contrastLevel, Variant variant, const std::vector<CustomColor> &customColors = {});
+        static Theme FromImage(py::array_t<Argb> image, double contrastLevel, Variant variant, const std::vector<CustomColor> &customColors = {});
 
         Argb source;
         std::string GetHexSource() const;

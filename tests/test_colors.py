@@ -26,15 +26,15 @@ def test_hex_from_argb():
 
 
 def test_theme_from_source_color():
-    custom_colors = [CustomColor(0xFF4285F4, "Google Blue", True)]
-    theme = Theme.from_source_color(0xFFFC03A3, 3.0, Variant.MONOCHROME, custom_colors)
+    custom_colors = [CustomColor("#4285F4", "Google Blue", True)]
+    theme = Theme.from_source_color("#FC03A3", 3.0, Variant.MONOCHROME, custom_colors)
     assert isinstance(theme, Theme)
-    assert theme.source == 0xFFFC03A3
+    assert theme.source == "#fc03a3"
 
 
 def test_theme_from_image(assets_folder: Path):
     image = PIL.Image.open(assets_folder / "test.jpg")
-    custom_colors = [CustomColor(0xFF4285F4, "Google Blue", True)]
+    custom_colors = [CustomColor("#4285F4", "Google Blue", True)]
     theme = Theme.from_image(image, 4.0, Variant.EXPRESSIVE, custom_colors)
     assert isinstance(theme, Theme)
 
@@ -47,7 +47,7 @@ def test_prominent_colors_from_image(assets_folder: Path):
 
 
 def test_get_contrast_ratio():
-    color1 = 0xFF000000
-    color2 = 0xFFFFFFFF
+    color1 = "#000000"
+    color2 = "#FFFFFF"
     ratio = get_contrast_ratio(color1, color2)
     assert ratio == pytest.approx(21.0, rel=1e-2)

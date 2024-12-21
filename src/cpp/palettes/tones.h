@@ -43,6 +43,7 @@ namespace material_color_utilities
      * @return a color as an integer, in ARGB format.
      */
     Argb get(double tone) const;
+    std::string GetHex(double tone) const;
 
     double get_hue() const { return hue_; }
     double get_chroma() const { return chroma_; }

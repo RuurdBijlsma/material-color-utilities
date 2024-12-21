@@ -7,7 +7,7 @@
 namespace material_color_utilities {
 
     CustomColorGroup GetCustomColor(Argb source, const CustomColor &color);
-    double GetContrastRatio(Argb color1, Argb color2);
+    double GetContrastRatio(std::string color1, std::string color2);
 
 }  // namespace material_color_utilities
 

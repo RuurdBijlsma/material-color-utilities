@@ -54,6 +54,10 @@ Argb TonalPalette::get(double tone) const {
   return IntFromHcl(hue_, chroma_, tone);
 }
 
+std::string TonalPalette::GetHex(double tone) const {
+  return RgbHexFromArgb(get(tone));
+}
+
 KeyColor::KeyColor(double hue, double requested_chroma)
     : hue_(hue), requested_chroma_(requested_chroma) {}
 

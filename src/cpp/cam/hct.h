@@ -65,6 +65,8 @@ class Hct {
    */
   explicit Hct(Argb argb);
 
+  explicit Hct(std::string hex);
+
   /**
    * Returns the hue of the color.
    *

@@ -18,6 +18,7 @@
 
 #include "cpp/cam/hct_solver.h"
 #include "cpp/utils/utils.h"
+#include "cpp/utils/hex_utils.h"
 
 namespace material_color_utilities {
 Hct::Hct(double hue, double chroma, double tone) {
@@ -25,6 +26,8 @@ Hct::Hct(double hue, double chroma, double tone) {
 }
 
 Hct::Hct(Argb argb) { SetInternalState(argb); }
+
+Hct::Hct(std::string hex) { SetInternalState(ArgbFromHex(hex)); }
 
 double Hct::get_hue() const { return hue_; }
 

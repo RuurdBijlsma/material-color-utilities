@@ -105,6 +105,8 @@ struct DynamicColor {
       std::function<TonalPalette(const DynamicScheme&)> palette,
       std::function<double(const DynamicScheme&)> tone);
 
+  std::string GetHex(const DynamicScheme& scheme);
+
   Argb GetArgb(const DynamicScheme& scheme);
 
   Hct GetHct(const DynamicScheme& scheme);

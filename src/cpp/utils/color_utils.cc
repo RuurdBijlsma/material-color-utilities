@@ -1,10 +1,10 @@
-#include <cpp/utils/utils.h>
-#include <cpp/contrast/contrast.h>
-#include <cpp/utils/color_utils.h>
 #include <cpp/palettes/tones.h>
+#include <cpp/contrast/contrast.h>
 #include <cpp/blend/blend.h>
 #include <cpp/utils/util_types.h>
-
+#include <cpp/utils/hex_utils.h>
+#include <cpp/utils/utils.h>
+#include <cpp/utils/color_utils.h>
 
 namespace material_color_utilities
 {
@@ -40,10 +40,10 @@ namespace material_color_utilities
         return result;
     }
 
-    double GetContrastRatio(Argb color1, Argb color2)
+    double GetContrastRatio(std::string color1, std::string color2)
     {
-        double tone1 = LstarFromArgb(color1);
-        double tone2 = LstarFromArgb(color2);
+        double tone1 = LstarFromArgb(ArgbFromHex(color1));
+        double tone2 = LstarFromArgb(ArgbFromHex(color2));
         double contrast_ratio = RatioOfTones(tone1, tone2);
         return contrast_ratio;
     }

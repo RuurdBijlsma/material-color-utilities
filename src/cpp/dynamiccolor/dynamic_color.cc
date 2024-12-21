@@ -125,6 +125,10 @@ Argb DynamicColor::GetArgb(const DynamicScheme& scheme) {
   return palette_(scheme).get(GetTone(scheme));
 }
 
+std::string DynamicColor::GetHex(const DynamicScheme& scheme) {
+  return RgbHexFromArgb(GetArgb(scheme));
+}
+
 Hct DynamicColor::GetHct(const DynamicScheme& scheme) {
   return Hct(GetArgb(scheme));
 }

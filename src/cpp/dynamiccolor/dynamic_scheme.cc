@@ -80,6 +80,7 @@ namespace material_color_utilities
     return source_hue;
   }
 
+  std::string DynamicScheme::SourceColorHex() const { return source_color_hct.ToHex(); }
   Argb DynamicScheme::SourceColorArgb() const { return source_color_hct.ToInt(); }
 
   Argb DynamicScheme::GetPrimaryPaletteKeyColor() const
@@ -350,6 +351,275 @@ namespace material_color_utilities
   Argb DynamicScheme::GetOnTertiaryFixedVariant() const
   {
     return MaterialDynamicColors::OnTertiaryFixedVariant().GetArgb(*this);
+  }
+  std::string DynamicScheme::HexPrimaryPaletteKeyColor() const
+  {
+    return MaterialDynamicColors::PrimaryPaletteKeyColor().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexSecondaryPaletteKeyColor() const
+  {
+    return MaterialDynamicColors::SecondaryPaletteKeyColor().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexTertiaryPaletteKeyColor() const
+  {
+    return MaterialDynamicColors::TertiaryPaletteKeyColor().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexNeutralPaletteKeyColor() const
+  {
+    return MaterialDynamicColors::NeutralPaletteKeyColor().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexNeutralVariantPaletteKeyColor() const
+  {
+    return MaterialDynamicColors::NeutralVariantPaletteKeyColor().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexBackground() const
+  {
+    return MaterialDynamicColors::Background().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexOnBackground() const
+  {
+    return MaterialDynamicColors::OnBackground().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexSurface() const
+  {
+    return MaterialDynamicColors::Surface().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexSurfaceDim() const
+  {
+    return MaterialDynamicColors::SurfaceDim().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexSurfaceBright() const
+  {
+    return MaterialDynamicColors::SurfaceBright().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexSurfaceContainerLowest() const
+  {
+    return MaterialDynamicColors::SurfaceContainerLowest().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexSurfaceContainerLow() const
+  {
+    return MaterialDynamicColors::SurfaceContainerLow().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexSurfaceContainer() const
+  {
+    return MaterialDynamicColors::SurfaceContainer().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexSurfaceContainerHigh() const
+  {
+    return MaterialDynamicColors::SurfaceContainerHigh().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexSurfaceContainerHighest() const
+  {
+    return MaterialDynamicColors::SurfaceContainerHighest().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexOnSurface() const
+  {
+    return MaterialDynamicColors::OnSurface().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexSurfaceVariant() const
+  {
+    return MaterialDynamicColors::SurfaceVariant().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexOnSurfaceVariant() const
+  {
+    return MaterialDynamicColors::OnSurfaceVariant().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexInverseSurface() const
+  {
+    return MaterialDynamicColors::InverseSurface().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexInverseOnSurface() const
+  {
+    return MaterialDynamicColors::InverseOnSurface().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexOutline() const
+  {
+    return MaterialDynamicColors::Outline().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexOutlineVariant() const
+  {
+    return MaterialDynamicColors::OutlineVariant().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexShadow() const
+  {
+    return MaterialDynamicColors::Shadow().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexScrim() const
+  {
+    return MaterialDynamicColors::Scrim().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexSurfaceTint() const
+  {
+    return MaterialDynamicColors::SurfaceTint().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexPrimary() const
+  {
+    return MaterialDynamicColors::Primary().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexOnPrimary() const
+  {
+    return MaterialDynamicColors::OnPrimary().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexPrimaryContainer() const
+  {
+    return MaterialDynamicColors::PrimaryContainer().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexOnPrimaryContainer() const
+  {
+    return MaterialDynamicColors::OnPrimaryContainer().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexInversePrimary() const
+  {
+    return MaterialDynamicColors::InversePrimary().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexSecondary() const
+  {
+    return MaterialDynamicColors::Secondary().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexOnSecondary() const
+  {
+    return MaterialDynamicColors::OnSecondary().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexSecondaryContainer() const
+  {
+    return MaterialDynamicColors::SecondaryContainer().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexOnSecondaryContainer() const
+  {
+    return MaterialDynamicColors::OnSecondaryContainer().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexTertiary() const
+  {
+    return MaterialDynamicColors::Tertiary().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexOnTertiary() const
+  {
+    return MaterialDynamicColors::OnTertiary().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexTertiaryContainer() const
+  {
+    return MaterialDynamicColors::TertiaryContainer().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexOnTertiaryContainer() const
+  {
+    return MaterialDynamicColors::OnTertiaryContainer().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexError() const
+  {
+    return MaterialDynamicColors::Error().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexOnError() const
+  {
+    return MaterialDynamicColors::OnError().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexErrorContainer() const
+  {
+    return MaterialDynamicColors::ErrorContainer().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexOnErrorContainer() const
+  {
+    return MaterialDynamicColors::OnErrorContainer().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexPrimaryFixed() const
+  {
+    return MaterialDynamicColors::PrimaryFixed().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexPrimaryFixedDim() const
+  {
+    return MaterialDynamicColors::PrimaryFixedDim().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexOnPrimaryFixed() const
+  {
+    return MaterialDynamicColors::OnPrimaryFixed().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexOnPrimaryFixedVariant() const
+  {
+    return MaterialDynamicColors::OnPrimaryFixedVariant().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexSecondaryFixed() const
+  {
+    return MaterialDynamicColors::SecondaryFixed().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexSecondaryFixedDim() const
+  {
+    return MaterialDynamicColors::SecondaryFixedDim().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexOnSecondaryFixed() const
+  {
+    return MaterialDynamicColors::OnSecondaryFixed().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexOnSecondaryFixedVariant() const
+  {
+    return MaterialDynamicColors::OnSecondaryFixedVariant().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexTertiaryFixed() const
+  {
+    return MaterialDynamicColors::TertiaryFixed().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexTertiaryFixedDim() const
+  {
+    return MaterialDynamicColors::TertiaryFixedDim().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexOnTertiaryFixed() const
+  {
+    return MaterialDynamicColors::OnTertiaryFixed().GetHex(*this);
+  }
+
+  std::string DynamicScheme::HexOnTertiaryFixedVariant() const
+  {
+    return MaterialDynamicColors::OnTertiaryFixedVariant().GetHex(*this);
   }
 
   DynamicScheme GetSchemeInstance(Variant variant, double constrastLevel, Hct sourceColorHct, bool isDark)
