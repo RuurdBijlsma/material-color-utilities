@@ -3,41 +3,34 @@
 #include <pybind11/numpy.h>
 #include <iostream>
 #include <cpp/utils/utils.h>
+#include <cpp/quantize/celebi.h>
+#include <cpp/score/score.h>
 
 namespace py = pybind11;
 
 namespace material_color_utilities
 {
-    void Process2DArray(py::array_t<Argb> input_array)
+    std::vector<Argb> ProminentColorsFromImage(py::array_t<Argb> image, size_t max_colors)
     {
         // Request a buffer info object from the array
-        py::buffer_info buf_info = input_array.request();
-
-        // Check that the array is 2D
-        if (buf_info.ndim != 2)
+        py::buffer_info buf_info = image.request();
+        if (buf_info.ndim != 1)
         {
-            throw std::runtime_error("Input array must be 2D.");
+            throw std::runtime_error("Input array must be 1D.");
         }
 
-        // Extract dimensions
-        size_t rows = buf_info.shape[0];
-        size_t cols = buf_info.shape[1];
-
-        // Access the raw data as a pointer
         Argb *data_ptr = static_cast<Argb *>(buf_info.ptr);
+        size_t size = buf_info.shape[0];
+        std::vector<Argb> vec(data_ptr, data_ptr + size);
 
-        // Print the array dimensions
-        std::cout << "Received a 2D array of size " << rows << "x" << cols << ":\n";
+        QuantizerResult a = QuantizeCelebi(vec, max_colors);
+        std::vector<Argb> colors = RankedSuggestions(a.color_to_count);
+        return colors;
+    }
 
-        // Iterate over the elements (row-major order)
-        for (size_t i = 0; i < rows; ++i)
-        {
-            for (size_t j = 0; j < cols; ++j)
-            {
-                // Access element at (i, j): offset = i * cols + j
-                std::cout << data_ptr[i * cols + j] << " ";
-            }
-            std::cout << "\n";
-        }
+    Argb SourceColorFromImage(py::array_t<Argb> image)
+    {
+        auto prominent_colors = ProminentColorsFromImage(image);
+        return prominent_colors[0];
     }
 } // namespace material_color_utilities

@@ -15,4 +15,4 @@ def image_to_argb(img: Image) -> np.ndarray:
     blue = rgba_array[:, :, 2].astype(np.uint32)
 
     # Combine into ARGB format
-    return alpha | red | green | blue
+    return (alpha | red | green | blue).ravel()

@@ -6,41 +6,15 @@
 #include "cpp/blend/blend.h"
 #include "cpp/scheme/scheme_vibrant.h"
 #include "cpp/palettes/tones.h"
+#include "cpp/utils/image_utils.h"
+#include <pybind11/pybind11.h>
+#include <pybind11/numpy.h>
+#include <cpp/utils/color_utils.h>
+
+namespace py = pybind11;
 
 namespace material_color_utilities
 {
-
-    CustomColorGroup GetCustomColor(Argb source, const CustomColor &color)
-    {
-        Argb value = color.value;
-        Argb from = value;
-        Argb to = source;
-
-        if (color.blend)
-        {
-            value = BlendHarmonize(from, to);
-        }
-
-        auto tones = TonalPalette(source);
-        CustomColorGroup result;
-
-        result.color = color;
-        result.value = value;
-
-        result.light = ColorGroup();
-
-        result.light.color = tones.get(40);
-        result.light.onColor = tones.get(100);
-        result.light.colorContainer = tones.get(90);
-        result.light.onColorContainer = tones.get(10);
-
-        result.dark.color = tones.get(80);
-        result.dark.onColor = tones.get(20);
-        result.dark.colorContainer = tones.get(30);
-        result.dark.onColorContainer = tones.get(90);
-
-        return result;
-    }
 
     Theme ThemeFromSourceColor(Argb source, double contrastLevel, Variant variant, const std::vector<CustomColor> &customColors)
     {
@@ -60,14 +34,7 @@ namespace material_color_utilities
         return theme;
     }
 
-    // Mocked function for example (replace with actual implementations)
-    Argb SourceColorFromImage(const std::string &image)
-    {
-        // Assuming we process the image here and return a source color
-        return 0xFFFF0000; // Dummy color, replace with actual image processing logic
-    }
-
-    Theme ThemeFromImage(const std::string &image, double contrastLevel, Variant variant, const std::vector<CustomColor> &customColors)
+    Theme ThemeFromImage(py::array_t<Argb> image, double contrastLevel, Variant variant, const std::vector<CustomColor> &customColors)
     {
         Argb source = SourceColorFromImage(image);
         return ThemeFromSourceColor(source, contrastLevel, variant, customColors);

@@ -2,10 +2,7 @@
 #define CPP_BINDINGS_REPRESENTATIONS_H_
 
 #include <string>
-#include "cpp/utils/utils.h"
-#include "cpp/utils/hex_utils.h"
-#include "cpp/utils/theme_utils.h"
-
+#include <cpp/utils/util_types.h>
 
 std::string theme_repr(const material_color_utilities::Theme &t);
 std::string argb_repr(const material_color_utilities::Argb &a);

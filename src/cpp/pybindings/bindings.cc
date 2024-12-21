@@ -1,8 +1,6 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
-#include "cpp/utils/utils.h"
-#include "cpp/utils/hex_utils.h"
-#include "cpp/utils/theme_utils.h"
+#include "cpp/utils/util_types.h"
 #include "cpp/pybindings/representations.h"
 #include "cpp/pybindings/bindings.h"
 #include <string>
