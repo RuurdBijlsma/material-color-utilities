@@ -18,9 +18,6 @@ set(BUILD_SHARED_LIBS
 # Python bindings setup
 set(PYBIND11_FINDPYTHON ON)
 find_package(pybind11 CONFIG QUIET)
-if(NOT pybind11_FOUND)
-  add_subdirectory(pybind11)
-endif()
 
 # Abseil setup
 add_subdirectory(abseil-cpp)
