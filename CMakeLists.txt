@@ -24,10 +24,10 @@ file(GLOB_RECURSE CPP_SOURCES src/*.cc)
 pybind11_add_module(_core MODULE ${CPP_SOURCES})
 
 # Include directories
-target_include_directories(_core PRIVATE src abseil-cpp/absl)
+target_include_directories(_core PRIVATE src abseil-cpp)
 
 # Link libraries
-target_link_libraries(_core PRIVATE absl::base absl::strings absl::synchronization)
+target_link_libraries(_core PRIVATE absl::base absl::strings absl::synchronization absl::hash absl::raw_hash_set)
 
 # Installation step
 install(TARGETS _core DESTINATION ${SKBUILD_PROJECT_NAME})
