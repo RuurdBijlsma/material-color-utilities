@@ -1,5 +1,12 @@
 import numpy as np
 from PIL.Image import Image
+from ruurd_colors._core import (
+    theme_from_array,
+    prominent_colors_from_array,
+    CustomColor,
+    Theme,
+    Variant,
+)
 
 
 def image_to_argb(img: Image) -> np.ndarray:
@@ -16,3 +23,16 @@ def image_to_argb(img: Image) -> np.ndarray:
 
     # Combine into ARGB format
     return (alpha | red | green | blue).ravel()
+
+
+def prominent_colors_from_image(img: Image, count: int = 64) -> list[int]:
+    return prominent_colors_from_array(image_to_argb(img), count)
+
+
+def theme_from_image(
+    img: Image,
+    contrast: float = 3,
+    variant: Variant = Variant.VIBRANT,
+    custom_colors: list[CustomColor] = [],
+) -> Theme:
+    return theme_from_array(image_to_argb(img), contrast, variant, custom_colors)
