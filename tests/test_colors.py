@@ -2,7 +2,7 @@ from pathlib import Path
 
 import PIL.Image
 import pytest
-from ruurd_colors import (
+from material_color_utilities import (
     argb_from_hex,
     hex_from_argb,
     prominent_colors_from_image,

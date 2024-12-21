@@ -1,6 +1,6 @@
 import numpy as np
 from PIL.Image import Image
-from ruurd_colors._core import (
+from material_color_utilities._core import (
     prominent_colors_from_array,
     CustomColor,
     Theme,

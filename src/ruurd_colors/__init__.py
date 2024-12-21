@@ -1,4 +1,4 @@
-from ruurd_colors._core import (  # type: ignore This is from the cpp package
+from material_color_utilities._core import (  # type: ignore This is from the cpp package
     argb_from_hex,
     hex_from_argb,
     prominent_colors_from_array,
@@ -13,7 +13,7 @@ from ruurd_colors._core import (  # type: ignore This is from the cpp package
     Hct,
 )
 
-from ruurd_colors.image_utils import (
+from material_color_utilities.image_utils import (
     image_to_argb,
     prominent_colors_from_image,
 )
