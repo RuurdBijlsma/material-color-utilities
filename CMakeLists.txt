@@ -12,7 +12,10 @@ set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build static libraries" FORCE)
 
 # Python bindings setup
 set(PYBIND11_FINDPYTHON ON)
-add_subdirectory(pybind11)
+find_package(pybind11 CONFIG QUIET)
+if(NOT pybind11_FOUND)
+    add_subdirectory(pybind11)
+endif()
 
 # Abseil setup
 add_subdirectory(abseil-cpp)
@@ -30,4 +33,4 @@ target_include_directories(_core PRIVATE src abseil-cpp)
 target_link_libraries(_core PRIVATE absl::base absl::strings absl::synchronization absl::hash absl::raw_hash_set)
 
 # Installation step
-install(TARGETS _core DESTINATION ${SKBUILD_PROJECT_NAME})
+install(TARGETS _core LIBRARY DESTINATION ${SKBUILD_PROJECT_NAME})
