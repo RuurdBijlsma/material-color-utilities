@@ -172,3 +172,46 @@ Represents a dynamic color scheme generated from a source color.
   - `tertiary_palette: TonalPalette`: The tertiary color palette.
   - `neutral_palette: TonalPalette`: The neutral color palette.
   - `error_palette: TonalPalette`: The error color palette.
+  - `surface_container_low: str`: The low surface container color.
+  - `surface_container: str`: The surface container color.
+  - `surface_container_high: str`: The high surface container color.
+  - `surface_container_highest: str`: The highest surface container color.
+  - `on_surface: str`: The color for text/icons on the surface.
+  - `surface_variant: str`: The surface variant color.
+  - `on_surface_variant: str`: The color for text/icons on the surface variant.
+  - `inverse_surface: str`: The inverse surface color.
+  - `inverse_on_surface: str`: The color for text/icons on the inverse surface.
+  - `outline: str`: The outline color.
+  - `outline_variant: str`: The outline variant color.
+  - `shadow: str`: The shadow color.
+  - `scrim: str`: The scrim color.
+  - `surface_tint: str`: The surface tint color.
+  - `primary: str`: The primary color.
+  - `on_primary: str`: The color for text/icons on primary color.
+  - `primary_container: str`: The primary container color.
+  - `on_primary_container: str`: The color for text/icons on the primary container.
+  - `inverse_primary: str`: The inverse primary color.
+  - `secondary: str`: The secondary color.
+  - `on_secondary: str`: The color for text/icons on secondary color.
+  - `secondary_container: str`: The secondary container color.
+  - `on_secondary_container: str`: The color for text/icons on the secondary container.
+  - `tertiary: str`: The tertiary color.
+  - `on_tertiary: str`: The color for text/icons on tertiary color.
+  - `tertiary_container: str`: The tertiary container color.
+  - `on_tertiary_container: str`: The color for text/icons on the tertiary container.
+  - `error: str`: The error color.
+  - `on_error: str`: The color for text/icons on error color.
+  - `error_container: str`: The error container color.
+  - `on_error_container: str`: The color for text/icons on the error container.
+  - `primary_fixed: str`: The fixed primary color.
+  - `primary_fixed_dim: str`: The dimmed fixed primary color.
+  - `on_primary_fixed: str`: The color for text/icons on the fixed primary color.
+  - `on_primary_fixed_variant: str`: The color for text/icons on the fixed primary variant.
+  - `secondary_fixed: str`: The fixed secondary color.
+  - `secondary_fixed_dim: str`: The dimmed fixed secondary color.
+  - `on_secondary_fixed: str`: The color for text/icons on the fixed secondary color.
+  - `on_secondary_fixed_variant: str`: The color for text/icons on the fixed secondary variant.
+  - `tertiary_fixed: str`: The fixed tertiary color.
+  - `tertiary_fixed_dim: str`: The dimmed fixed tertiary color.
+  - `on_tertiary_fixed: str`: The color for text/icons on the fixed tertiary color.
+  - `on_tertiary_fixed_variant: str`: The color for text/icons on the fixed tertiary variant.
