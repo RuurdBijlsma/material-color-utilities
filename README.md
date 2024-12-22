@@ -22,8 +22,6 @@ pip install material-color-utilities
   - Generate Material Design themes from source colors or images.
 - **Image Processing**
   - Extract prominent colors from images.
-- **Color Conversions**
-  - Convert ARGB values to HEX and vice versa.
 - **Contrast Ratio**
   - Calculate contrast ratios between colors.
 
