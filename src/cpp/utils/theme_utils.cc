@@ -16,7 +16,7 @@ namespace py = pybind11;
 namespace material_color_utilities
 {
 
-    Theme Theme::FromSourceColorArgb(Argb source, double contrastLevel, Variant variant, const std::vector<CustomColor> &customColors)
+    Theme ThemeFromArgbColor(Argb source, double contrastLevel, Variant variant, const std::vector<CustomColor> &customColors)
     {
         auto hctSource = Hct(source);
         Theme theme;
@@ -34,14 +34,14 @@ namespace material_color_utilities
         return theme;
     }
 
-    Theme Theme::FromSourceColor(std::string source, double contrastLevel, Variant variant, const std::vector<CustomColor> &customColors)
+    Theme ThemeFromColor(std::string source, double contrastLevel, Variant variant, const std::vector<CustomColor> &customColors)
     {
-        return Theme::FromSourceColorArgb(ArgbFromHex(source), contrastLevel, variant, customColors);
+        return ThemeFromArgbColor(ArgbFromHex(source), contrastLevel, variant, customColors);
     }
 
-    Theme Theme::FromImage(py::array_t<Argb> image, double contrastLevel, Variant variant, const std::vector<CustomColor> &customColors)
+    Theme ThemeFromImage(py::array_t<Argb> image, double contrastLevel, Variant variant, const std::vector<CustomColor> &customColors)
     {
-        return Theme::FromSourceColorArgb(ArgbSourceColorFromImage(image), contrastLevel, variant, customColors);
+        return ThemeFromArgbColor(ArgbSourceColorFromImage(image), contrastLevel, variant, customColors);
     }
 
 } // namespace material_color_utilities

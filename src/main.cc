@@ -52,6 +52,28 @@ PYBIND11_MODULE(_core, m)
         &material_color_utilities::GetContrastRatio,
         "Returns the contrast ratio of two colors.",
         py::arg("color1"), py::arg("color2"));
+  m.def("theme_from_color",
+        &material_color_utilities::ThemeFromColor,
+        "Returns a theme from a source color.",
+        py::arg("source"),
+        py::arg("contrast_level") = 3,
+        py::arg("variant") = material_color_utilities::Variant::kVibrant,
+        py::arg("custom_colors") = std::vector<material_color_utilities::CustomColor>());
+  m.def("theme_from_argb_color",
+        &material_color_utilities::ThemeFromArgbColor,
+        "Returns a theme from a source color.",
+        py::arg("source"),
+        py::arg("contrast_level") = 3,
+        py::arg("variant") = material_color_utilities::Variant::kVibrant,
+        py::arg("custom_colors") = std::vector<material_color_utilities::CustomColor>());
+  m.def("theme_from_array",
+        &material_color_utilities::ThemeFromImage,
+        "Returns a theme from an image.",
+        py::arg("image"),
+        py::arg("contrast_level") = 3,
+        py::arg("variant") = material_color_utilities::Variant::kVibrant,
+        py::arg("custom_colors") = std::vector<material_color_utilities::CustomColor>());
+
 
 #ifdef VERSION_INFO
   m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);

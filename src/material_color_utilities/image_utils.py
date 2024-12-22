@@ -1,10 +1,13 @@
 import numpy as np
 from PIL.Image import Image
+
 from material_color_utilities._core import (
-    prominent_colors_from_array,
     CustomColor,
     Theme,
     Variant,
+    prominent_colors_from_array,
+    prominent_colors_from_array_argb,
+    theme_from_array,
 )
 
 
@@ -24,17 +27,20 @@ def image_to_argb(img: Image) -> np.ndarray:
     return (alpha | red | green | blue).ravel()
 
 
-def prominent_colors_from_image(img: Image, count: int = 64) -> list[int]:
+def prominent_colors_from_image_argb(img: Image, count: int = 64) -> list[int]:
+    return prominent_colors_from_array_argb(image_to_argb(img), count)
+
+
+def prominent_colors_from_image(img: Image, count: int = 64) -> list[str]:
     return prominent_colors_from_array(image_to_argb(img), count)
 
 
-def _theme_from_image(
+def theme_from_image(
     img: Image,
     contrast: float = 3,
     variant: Variant = Variant.VIBRANT,
-    custom_colors: list[CustomColor] = [],
+    custom_colors: list[CustomColor] | None = None,
 ) -> Theme:
-    return Theme.from_array(image_to_argb(img), contrast, variant, custom_colors)
-
-
-Theme.from_image = _theme_from_image
+    if custom_colors is None:
+        custom_colors = []
+    return theme_from_array(image_to_argb(img), contrast, variant, custom_colors)

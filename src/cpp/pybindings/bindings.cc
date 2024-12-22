@@ -3,6 +3,7 @@
 #include "cpp/utils/util_types.h"
 #include "cpp/pybindings/representations.h"
 #include "cpp/pybindings/bindings.h"
+#include <cpp/pybindings/py_dict.h>
 #include <string>
 namespace py = pybind11;
 
@@ -10,35 +11,16 @@ void bind_theme(py::module &m)
 {
   py::class_<material_color_utilities::Theme>(m, "Theme")
       .def(py::init<>()) // Default constructor
-      .def_static("from_source_color_argb",
-                  &material_color_utilities::Theme::FromSourceColorArgb,
-                  py::arg("source"),
-                  py::arg("contrast_level"),
-                  py::arg("variant"),
-                  py::arg("custom_colors") = std::vector<material_color_utilities::CustomColor>())
-      .def_static("from_source_color",
-                  &material_color_utilities::Theme::FromSourceColor,
-                  py::arg("source"),
-                  py::arg("contrast_level"),
-                  py::arg("variant"),
-                  py::arg("custom_colors") = std::vector<material_color_utilities::CustomColor>())
-      .def_static("from_array",
-                  &material_color_utilities::Theme::FromImage,
-                  py::arg("image"),
-                  py::arg("contrast_level"),
-                  py::arg("variant"),
-                  py::arg("custom_colors") = std::vector<material_color_utilities::CustomColor>())
       .def_readwrite("argb", &material_color_utilities::Theme::source)
       .def_property_readonly("source", &material_color_utilities::Theme::GetHexSource)
       .def_readwrite("schemes", &material_color_utilities::Theme::schemes)
       .def_readwrite("contrast_level", &material_color_utilities::Theme::contrastLevel)
       .def_readwrite("variant", &material_color_utilities::Theme::variant)
       .def_readwrite("custom_colors", &material_color_utilities::Theme::customColors)
-      .def("__repr__",
-           [](const material_color_utilities::Theme &t)
-           {
-             return theme_repr(t);
-           });
+      .def("dict", [](const material_color_utilities::Theme &t)
+           { return ThemeDict(t); })
+      .def("__repr__", [](const material_color_utilities::Theme &t)
+           { return theme_repr(t); });
 }
 
 void bind_hct(py::module &m)
@@ -52,11 +34,10 @@ void bind_hct(py::module &m)
       .def_property("hue", &material_color_utilities::Hct::get_hue, &material_color_utilities::Hct::set_hue)
       .def_property("chroma", &material_color_utilities::Hct::get_chroma, &material_color_utilities::Hct::set_chroma)
       .def_property("tone", &material_color_utilities::Hct::get_tone, &material_color_utilities::Hct::set_tone)
-      .def("__repr__",
-           [](const material_color_utilities::Hct &h)
-           {
-             return hct_repr(h);
-           });
+      .def("dict", [](const material_color_utilities::Hct &h)
+           { return HctDict(h); })
+      .def("__repr__", [](const material_color_utilities::Hct &h)
+           { return hct_repr(h); });
 }
 
 void bind_dynamic_scheme_group(py::module &m)
@@ -65,11 +46,10 @@ void bind_dynamic_scheme_group(py::module &m)
       .def(py::init<>()) // Default constructor
       .def_readwrite("light", &material_color_utilities::DynamicSchemeGroup::light)
       .def_readwrite("dark", &material_color_utilities::DynamicSchemeGroup::dark)
-      .def("__repr__",
-           [](const material_color_utilities::DynamicSchemeGroup &d)
-           {
-             return dynamic_scheme_group_repr(d);
-           });
+      .def("dict", [](const material_color_utilities::DynamicSchemeGroup &d)
+           { return DynamicSchemeGroupDict(d); })
+      .def("__repr__", [](const material_color_utilities::DynamicSchemeGroup &d)
+           { return dynamic_scheme_group_repr(d); });
 }
 
 void bind_custom_color_group(py::module &m)
@@ -81,11 +61,10 @@ void bind_custom_color_group(py::module &m)
       .def_property_readonly("value", &material_color_utilities::CustomColorGroup::GetHexValue)
       .def_readwrite("light", &material_color_utilities::CustomColorGroup::light)
       .def_readwrite("dark", &material_color_utilities::CustomColorGroup::dark)
-      .def("__repr__",
-           [](const material_color_utilities::CustomColorGroup &c)
-           {
-             return custom_color_group_repr(c);
-           });
+      .def("dict", [](const material_color_utilities::CustomColorGroup &c)
+           { return CustomColorGroupDict(c); })
+      .def("__repr__", [](const material_color_utilities::CustomColorGroup &c)
+           { return custom_color_group_repr(c); });
 }
 
 void bind_custom_color(py::module &m)
@@ -98,11 +77,10 @@ void bind_custom_color(py::module &m)
       .def_property_readonly("value", &material_color_utilities::CustomColor::GetHexValue)
       .def_readwrite("name", &material_color_utilities::CustomColor::name)
       .def_readwrite("blend", &material_color_utilities::CustomColor::blend)
-      .def("__repr__",
-           [](const material_color_utilities::CustomColor &c)
-           {
-             return custom_color_repr(c);
-           });
+      .def("dict", [](const material_color_utilities::CustomColor &c)
+           { return CustomColorDict(c); })
+      .def("__repr__", [](const material_color_utilities::CustomColor &c)
+           { return custom_color_repr(c); });
 }
 
 void bind_variant(py::module &m)
@@ -117,11 +95,10 @@ void bind_variant(py::module &m)
       .value("CONTENT", material_color_utilities::Variant::kContent)
       .value("RAINBOW", material_color_utilities::Variant::kRainbow)
       .value("FRUITSALAD", material_color_utilities::Variant::kFruitSalad)
-      .def("__repr__",
-           [](const material_color_utilities::Variant &v)
-           {
-             return variant_repr(v);
-           });
+      .def("__str__", [](material_color_utilities::Variant v)
+           { return VariantToString(v); })
+      .def("__repr__", [](const material_color_utilities::Variant &v)
+           { return variant_repr(v); });
 }
 
 void bind_tonal_palette(py::module &m)
@@ -137,11 +114,10 @@ void bind_tonal_palette(py::module &m)
       .def_property_readonly("hue", &material_color_utilities::TonalPalette::get_hue)
       .def_property_readonly("chroma", &material_color_utilities::TonalPalette::get_chroma)
       .def_property_readonly("key_color", &material_color_utilities::TonalPalette::get_key_color)
-      .def("__repr__",
-           [](const material_color_utilities::TonalPalette &t)
-           {
-             return tonal_palette_repr(t);
-           });
+      .def("dict", [](const material_color_utilities::TonalPalette &t)
+           { return TonalPaletteDict(t); })
+      .def("__repr__", [](const material_color_utilities::TonalPalette &t)
+           { return tonal_palette_repr(t); });
 }
 
 void bind_color_group(py::module &m)
@@ -156,11 +132,10 @@ void bind_color_group(py::module &m)
       .def_property_readonly("on_color", &material_color_utilities::ColorGroup::GetHexOnColor)
       .def_property_readonly("color_container", &material_color_utilities::ColorGroup::GetHexColorContainer)
       .def_property_readonly("on_color_container", &material_color_utilities::ColorGroup::GetHexOnColorContainer)
-      .def("__repr__",
-           [](const material_color_utilities::ColorGroup &c)
-           {
-             return color_group_repr(c);
-           });
+      .def("dict", [](const material_color_utilities::ColorGroup &c)
+           { return ColorGroupDict(c); })
+      .def("__repr__", [](const material_color_utilities::ColorGroup &c)
+           { return color_group_repr(c); });
 }
 
 void bind_dynamic_scheme(py::module &m)
@@ -220,11 +195,10 @@ void bind_dynamic_scheme(py::module &m)
       .def_property_readonly("tertiary_fixed_dim", &material_color_utilities::DynamicScheme::HexTertiaryFixedDim)
       .def_property_readonly("on_tertiary_fixed", &material_color_utilities::DynamicScheme::HexOnTertiaryFixed)
       .def_property_readonly("on_tertiary_fixed_variant", &material_color_utilities::DynamicScheme::HexOnTertiaryFixedVariant)
-      .def("__repr__",
-           [](const material_color_utilities::DynamicScheme &d)
-           {
-             return dynamic_scheme_repr(d);
-           });
+      .def("dict", [](const material_color_utilities::DynamicScheme &d)
+           { return DynamicSchemeDict(d); })
+      .def("__repr__", [](const material_color_utilities::DynamicScheme &d)
+           { return dynamic_scheme_repr(d); });
 
   m.def("get_rotated_hue", &material_color_utilities::DynamicScheme::GetRotatedHue, py::arg("source_color"), py::arg("hues"), py::arg("rotations"));
 }

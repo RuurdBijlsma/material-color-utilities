@@ -15,7 +15,6 @@ namespace py = pybind11;
 
 namespace material_color_utilities
 {
-
     struct CustomColor
     {
         CustomColor() : value(0), name(""), blend(false) {}
@@ -76,10 +75,6 @@ namespace material_color_utilities
               contrastLevel(0),
               variant(Variant::kVibrant),
               customColors() {}
-
-        static Theme FromSourceColorArgb(Argb source, double contrastLevel, Variant variant, const std::vector<CustomColor> &customColors = {});
-        static Theme FromSourceColor(std::string source, double contrastLevel, Variant variant, const std::vector<CustomColor> &customColors = {});
-        static Theme FromImage(py::array_t<Argb> image, double contrastLevel, Variant variant, const std::vector<CustomColor> &customColors = {});
 
         Argb source;
         std::string GetHexSource() const;
