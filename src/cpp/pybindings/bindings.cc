@@ -10,24 +10,6 @@ void bind_theme(py::module &m)
 {
   py::class_<material_color_utilities::Theme>(m, "Theme")
       .def(py::init<>()) // Default constructor
-      .def_static("from_source_color_argb",
-                  &material_color_utilities::Theme::FromSourceColorArgb,
-                  py::arg("source"),
-                  py::arg("contrast_level"),
-                  py::arg("variant"),
-                  py::arg("custom_colors") = std::vector<material_color_utilities::CustomColor>())
-      .def_static("from_source_color",
-                  &material_color_utilities::Theme::FromSourceColor,
-                  py::arg("source"),
-                  py::arg("contrast_level"),
-                  py::arg("variant"),
-                  py::arg("custom_colors") = std::vector<material_color_utilities::CustomColor>())
-      .def_static("from_array",
-                  &material_color_utilities::Theme::FromImage,
-                  py::arg("image"),
-                  py::arg("contrast_level"),
-                  py::arg("variant"),
-                  py::arg("custom_colors") = std::vector<material_color_utilities::CustomColor>())
       .def_readwrite("argb", &material_color_utilities::Theme::source)
       .def_property_readonly("source", &material_color_utilities::Theme::GetHexSource)
       .def_readwrite("schemes", &material_color_utilities::Theme::schemes)
