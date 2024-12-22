@@ -31,7 +31,7 @@ pip install material-color-utilities
 
 ## Usage
 
-Complete API documentation here: [API docs](docs/api.md).
+Complete API documentation here: [API docs](https://github.com/RuurdBijlsma/material-color-utilities/blob/main/docs/api.md).
 
 ### Importing the Library
 
@@ -137,7 +137,7 @@ uv run pytest tests
 
 This project is "forked" from [material-foundation/material-color-utilities/](https://github.com/material-foundation/material-color-utilities).
 
-This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the Apache License 2.0. See the [LICENSE](https://github.com/RuurdBijlsma/material-color-utilities/blob/main/LICENSE) file for details.
 
 ---
 
