@@ -144,6 +144,5 @@ This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE
 ## Links
 
 - **PyPI:** [https://pypi.org/project/material-color-utilities](https://pypi.org/project/material-color-utilities/)
-- **Original C++ source:
-  ** [https://github.com/material-foundation/material-color-utilities](https://github.com/material-foundation/material-color-utilities)
+- Original C++ source: [https://github.com/material-foundation/material-color-utilities](https://github.com/material-foundation/material-color-utilities)
 - **Material Design Guidelines:** [https://material.io/design](https://material.io/design)
