@@ -12,8 +12,8 @@ from material_color_utilities import (
     hex_from_argb,
     prominent_colors_from_image,
     theme_from_color,
+    theme_from_image,
 )
-from material_color_utilities.image_utils import theme_from_image
 
 
 def test_argb_from_hex():
@@ -30,7 +30,7 @@ def test_hex_from_argb():
 
 def test_theme_from_source_color():
     custom_colors = [CustomColor("#4285F4", "Google Blue", True)]
-    theme = theme_from_color("#FC03A3", 3.0, Variant.MONOCHROME, custom_colors)
+    theme = theme_from_color("#FC03A3", 2.0, Variant.EXPRESSIVE, custom_colors)
     assert isinstance(theme, Theme)
     assert theme.source == "#fc03a3"
 
@@ -38,7 +38,7 @@ def test_theme_from_source_color():
 def test_theme_from_image(assets_folder: Path):
     image = PIL.Image.open(assets_folder / "test.jpg")
     custom_colors = [CustomColor("#4285F4", "Google Blue", True)]
-    theme = theme_from_image(image, 4.0, Variant.EXPRESSIVE, custom_colors)
+    theme = theme_from_image(image, 4.0, Variant.CONTENT, custom_colors)
     assert isinstance(theme, Theme)
 
 
@@ -54,3 +54,10 @@ def test_get_contrast_ratio():
     color2 = "#FFFFFF"
     ratio = get_contrast_ratio(color1, color2)
     assert ratio == pytest.approx(21.0, rel=1e-2)
+
+
+def test_dict():
+    custom_colors = [CustomColor("#4285F4", "Google Blue", True)]
+    theme = theme_from_color("#FC03A3", 8, Variant.VIBRANT, custom_colors)
+    theme_dict = theme.dict()
+    assert isinstance(theme_dict, dict)

@@ -17,9 +17,11 @@ from material_color_utilities._core import (  # type: ignore
 from material_color_utilities.image_utils import (
     image_to_argb,
     prominent_colors_from_image,
+    theme_from_image,
 )
 
 __all__ = [
+    "theme_from_image",
     "argb_from_hex",
     "hex_from_argb",
     "image_to_argb",

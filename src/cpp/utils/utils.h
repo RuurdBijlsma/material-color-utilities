@@ -22,7 +22,6 @@
 
 namespace material_color_utilities
 {
-
   using Argb = uint32_t;
 
   /**

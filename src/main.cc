@@ -74,6 +74,7 @@ PYBIND11_MODULE(_core, m)
         py::arg("variant") = material_color_utilities::Variant::kVibrant,
         py::arg("custom_colors") = std::vector<material_color_utilities::CustomColor>());
 
+
 #ifdef VERSION_INFO
   m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);
 #else
