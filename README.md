@@ -38,7 +38,6 @@ Complete API documentation here: [API docs](https://github.com/RuurdBijlsma/mate
 ```python
 from material_color_utilities import (
     CustomColor,
-    Theme,
     Variant,
     argb_from_hex,
     hex_from_argb,
