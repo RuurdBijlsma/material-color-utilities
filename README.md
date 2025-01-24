@@ -77,7 +77,7 @@ theme = theme_from_image(image, 4.0, Variant.CONTENT, custom_colors)
 
 #### Theme to dict
 
-A `Theme` object can be converted to a dict, an example theme dict can be found [here](docs/theme_dict_example.py).
+A `Theme` object can be converted to a dict, an example theme dict can be found [here](https://github.com/RuurdBijlsma/material-color-utilities/blob/main/docs/theme_dict_example.py).
 
 ```python
 theme = theme_from_color("#FF0000")

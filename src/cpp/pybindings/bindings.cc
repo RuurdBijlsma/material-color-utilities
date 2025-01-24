@@ -25,17 +25,17 @@ void bind_theme(py::module &m)
 
 void bind_hct(py::module &m)
 {
-  py::class_<material_color_utilities::Hct>(m, "Hct")
-      .def(py::init<>()) // Default constructor
-      .def(py::init<const material_color_utilities::Argb &>(), py::arg("argb"))
-      .def(py::init<const std::string &>(), py::arg("hex"))
+  py::class_<material_color_utilities::Hct>(m, "Hct", "Represents a color in the HCT color space.")
+      .def(py::init<>(), "Construct a color in the HCT color space.") // Default constructor
+      .def(py::init<const material_color_utilities::Argb &>(), py::arg("argb"), "Construct a color in the HCT color space.")
+      .def(py::init<const std::string &>(), py::arg("hex"), "Construct a color in the HCT color space.")
       .def_property_readonly("argb", &material_color_utilities::Hct::ToInt)
       .def_property_readonly("hex", &material_color_utilities::Hct::ToHex)
       .def_property("hue", &material_color_utilities::Hct::get_hue, &material_color_utilities::Hct::set_hue)
       .def_property("chroma", &material_color_utilities::Hct::get_chroma, &material_color_utilities::Hct::set_chroma)
       .def_property("tone", &material_color_utilities::Hct::get_tone, &material_color_utilities::Hct::set_tone)
       .def("dict", [](const material_color_utilities::Hct &h)
-           { return HctDict(h); })
+           { return HctDict(h); }, "Returns a dictionary representation of the color.")
       .def("__repr__", [](const material_color_utilities::Hct &h)
            { return hct_repr(h); });
 }
