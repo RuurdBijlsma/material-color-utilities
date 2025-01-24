@@ -229,6 +229,9 @@ class Variant(StrEnum):
 def argb_from_hex(hex: str) -> int:
     """Converts a hex color code string to its ARGB representation.
 
+    In MCU, an sRGB color usually appears as a hexadecimal number in ARGB format: for example,
+    #abcdef is 0xffabcdef. The leading ff means that this is an opaque color (alpha = 0xff).
+
     Args:
         hex: A hex color code string.
 
@@ -241,6 +244,9 @@ def argb_from_hex(hex: str) -> int:
 def hex_from_argb(argb: int) -> str:
     """Returns the hexadecimal representation of a color.
 
+    In MCU, an sRGB color usually appears as a hexadecimal number in ARGB format: for example,
+    #abcdef is 0xffabcdef. The leading ff means that this is an opaque color (alpha = 0xff).
+
     Args:
         argb: The ARGB color value.
 
@@ -250,15 +256,19 @@ def hex_from_argb(argb: int) -> str:
     ...
 
 
-def prominent_colors_from_array(image: np.ndarray, max_colors: int = 64) -> list[str]:
+def prominent_colors_from_array(image: np.ndarray, max_colors: int = 128) -> list[str]:
     """Returns the prominent hex colors from an image in the shape of a 2D array.
+
+    The colors are sorted by score:
+        https://github.com/material-foundation/material-color-utilities/blob/main/concepts/color_extraction.md#scoring
 
     More info:
         https://github.com/material-foundation/material-color-utilities/blob/main/concepts/color_extraction.md
 
     Args:
         image: A 1D array of ARGB values representing the image.
-        max_colors: The maximum number of prominent colors to return (default is 64).
+        max_colors: A limit on the number of colors returned by the quantizer.
+            Does not directly determine how many colors are returned, a reasonable default is 128.
 
     Returns:
         A list of colors in hex format.
@@ -267,13 +277,20 @@ def prominent_colors_from_array(image: np.ndarray, max_colors: int = 64) -> list
 
 
 def prominent_colors_from_array_argb(
-    image: np.ndarray, max_colors: int = 64
+    image: np.ndarray, max_colors: int = 128
 ) -> list[int]:
     """Returns the prominent ARGB colors from an image in the shape of a 1D array.
 
+    The colors are sorted by score:
+        https://github.com/material-foundation/material-color-utilities/blob/main/concepts/color_extraction.md#scoring
+
+    More info:
+        https://github.com/material-foundation/material-color-utilities/blob/main/concepts/color_extraction.md
+
     Args:
         image: A 1D array of ARGB values representing the image.
-        max_colors: The maximum number of prominent colors to return (default is 64).
+        max_colors: A limit on the number of colors returned by the quantizer.
+            Does not directly determine how many colors are returned, a reasonable default is 128.
 
     Returns:
         A list of colors in ARGB format.
@@ -305,6 +322,11 @@ def theme_from_color(
 ) -> Theme:
     """Returns a theme from a source color.
 
+    More info:
+        1: https://github.com/material-foundation/material-color-utilities/blob/main/concepts/color_extraction.md
+        2. https://github.com/material-foundation/material-color-utilities/blob/main/concepts/dynamic_color_scheme.md
+        3. https://github.com/material-foundation/material-color-utilities/blob/main/concepts/scheme_generation.md
+
     Args:
         source: The hex value of the source color.
         contrast_level: The contrast level (default is 3).
@@ -324,6 +346,11 @@ def theme_from_argb_color(
     custom_colors: list[CustomColor] | None = None,
 ) -> Theme:
     """Returns a theme from a source ARGB color.
+
+    More info:
+        1: https://github.com/material-foundation/material-color-utilities/blob/main/concepts/color_extraction.md
+        2. https://github.com/material-foundation/material-color-utilities/blob/main/concepts/dynamic_color_scheme.md
+        3. https://github.com/material-foundation/material-color-utilities/blob/main/concepts/scheme_generation.md
 
     Args:
         source: The ARGB value of the source color.

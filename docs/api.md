@@ -24,12 +24,12 @@ Returns the hexadecimal representation of a color.
 
 ---
 
-### `prominent_colors_from_image(image: PIL.Image.Image, max_colors: int = 64) -> list[str]`
+### `prominent_colors_from_image(image: PIL.Image.Image, max_colors: int = 128) -> list[str]`
 Returns the prominent colors from a PIL image.
 
 - **Parameters**:
   - `image`: PIL Image (this will be converted to RGBA and resized to fit in 128x128 by the package)
-  - `max_colors`: An optional integer specifying the maximum number of colors to return (default is `64`).
+  - `max_colors`: An optional integer specifying the maximum number of colors to return (default is `128`).
 
 - **Returns**:
   - A list of hex colors representing the prominent colors.
