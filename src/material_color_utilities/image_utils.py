@@ -40,6 +40,8 @@ def prominent_colors_from_image_argb(img: Image, count: int = 64) -> list[int]:
     Extracts prominent ARGB colors from an image.
 
     The image is resized to 128x128 for performance before processing.
+    More info:
+        https://github.com/material-foundation/material-color-utilities/blob/main/concepts/color_extraction.md
 
     Args:
         img: The input image from which to extract colors.
@@ -56,6 +58,8 @@ def prominent_colors_from_image(img: Image, count: int = 64) -> list[str]:
     Extracts prominent hex colors from an image.
 
     The image is resized to 128x128 for performance before processing.
+    More info:
+        https://github.com/material-foundation/material-color-utilities/blob/main/concepts/color_extraction.md
 
     Args:
         img: The input image from which to extract colors.
