@@ -1,6 +1,6 @@
 [project]
 name = "material-color-utilities"
-version = "0.1.4"
+version = "0.2.0"
 description = "Theme color library for Material You."
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -20,6 +20,7 @@ Documentation = "https://github.com/RuurdBijlsma/material-color-utilities/blob/m
 
 [tool.ruff]
 exclude = ['abseil-cpp']
+lint.ignore = ["F811"]
 
 [tool.scikit-build]
 minimum-version = "build-system.requires"
