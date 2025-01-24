@@ -12,7 +12,7 @@ from material_color_utilities._core import (
 
 
 def image_to_argb(img: Image) -> np.ndarray:
-    """Converts an image to ARGB flat array with a size of 128x128.
+    """Converts an image to ARGB flattened array with a length of 128 * 128 = 16384.
 
     Args:
         img: The input image to be converted.
@@ -35,7 +35,7 @@ def image_to_argb(img: Image) -> np.ndarray:
     return (alpha | red | green | blue).ravel()
 
 
-def prominent_colors_from_image_argb(img: Image, count: int = 64) -> list[int]:
+def prominent_colors_from_image_argb(img: Image, max_colors: int = 128) -> list[int]:
     """
     Extracts prominent ARGB colors from an image.
 
@@ -45,15 +45,16 @@ def prominent_colors_from_image_argb(img: Image, count: int = 64) -> list[int]:
 
     Args:
         img: The input image from which to extract colors.
-        count: The maximum number of prominent colors to return.
+        max_colors: A limit on the number of colors returned by the quantizer.
+            Does not directly determine how many colors are returned, a reasonable default is 128.
 
     Returns:
         A list of prominent colors in ARGB format.
     """
-    return prominent_colors_from_array_argb(image_to_argb(img), count)
+    return prominent_colors_from_array_argb(image_to_argb(img), max_colors)
 
 
-def prominent_colors_from_image(img: Image, count: int = 64) -> list[str]:
+def prominent_colors_from_image(img: Image, max_colors: int = 128) -> list[str]:
     """
     Extracts prominent hex colors from an image.
 
@@ -63,12 +64,13 @@ def prominent_colors_from_image(img: Image, count: int = 64) -> list[str]:
 
     Args:
         img: The input image from which to extract colors.
-        count: The number of prominent colors to return.
+        max_colors: A limit on the number of colors returned by the quantizer.
+            Does not directly determine how many colors are returned, a reasonable default is 128.
 
     Returns:
         A list of prominent colors in hex format.
     """
-    return prominent_colors_from_array(image_to_argb(img), count)
+    return prominent_colors_from_array(image_to_argb(img), max_colors)
 
 
 def theme_from_image(

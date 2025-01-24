@@ -9,8 +9,8 @@ namespace py = pybind11;
 
 namespace material_color_utilities
 {
-    std::vector<std::string> ProminentColorsFromImage(py::array_t<Argb> input_array, size_t max_colors = 64);
-    std::vector<Argb> ProminentColorsFromImageArgb(py::array_t<Argb> input_array, size_t max_colors = 64);
+    std::vector<std::string> ProminentColorsFromImage(py::array_t<Argb> input_array, size_t max_colors = 128);
+    std::vector<Argb> ProminentColorsFromImageArgb(py::array_t<Argb> input_array, size_t max_colors = 128);
     Argb ArgbSourceColorFromImage(py::array_t<Argb> input_array);
     std::string SourceColorFromImage(py::array_t<Argb> input_array);
 

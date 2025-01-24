@@ -256,15 +256,19 @@ def hex_from_argb(argb: int) -> str:
     ...
 
 
-def prominent_colors_from_array(image: np.ndarray, max_colors: int = 64) -> list[str]:
+def prominent_colors_from_array(image: np.ndarray, max_colors: int = 128) -> list[str]:
     """Returns the prominent hex colors from an image in the shape of a 2D array.
+
+    The colors are sorted by score:
+        https://github.com/material-foundation/material-color-utilities/blob/main/concepts/color_extraction.md#scoring
 
     More info:
         https://github.com/material-foundation/material-color-utilities/blob/main/concepts/color_extraction.md
 
     Args:
         image: A 1D array of ARGB values representing the image.
-        max_colors: The maximum number of prominent colors to return (default is 64).
+        max_colors: A limit on the number of colors returned by the quantizer.
+            Does not directly determine how many colors are returned, a reasonable default is 128.
 
     Returns:
         A list of colors in hex format.
@@ -273,16 +277,20 @@ def prominent_colors_from_array(image: np.ndarray, max_colors: int = 64) -> list
 
 
 def prominent_colors_from_array_argb(
-    image: np.ndarray, max_colors: int = 64
+    image: np.ndarray, max_colors: int = 128
 ) -> list[int]:
     """Returns the prominent ARGB colors from an image in the shape of a 1D array.
+
+    The colors are sorted by score:
+        https://github.com/material-foundation/material-color-utilities/blob/main/concepts/color_extraction.md#scoring
 
     More info:
         https://github.com/material-foundation/material-color-utilities/blob/main/concepts/color_extraction.md
 
     Args:
         image: A 1D array of ARGB values representing the image.
-        max_colors: The maximum number of prominent colors to return (default is 64).
+        max_colors: A limit on the number of colors returned by the quantizer.
+            Does not directly determine how many colors are returned, a reasonable default is 128.
 
     Returns:
         A list of colors in ARGB format.
