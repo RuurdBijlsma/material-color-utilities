@@ -39,6 +39,8 @@ def prominent_colors_from_image_argb(img: Image, count: int = 64) -> list[int]:
     """
     Extracts prominent ARGB colors from an image.
 
+    The image is resized to 128x128 for performance before processing.
+
     Args:
         img: The input image from which to extract colors.
         count: The maximum number of prominent colors to return.
@@ -52,6 +54,8 @@ def prominent_colors_from_image_argb(img: Image, count: int = 64) -> list[int]:
 def prominent_colors_from_image(img: Image, count: int = 64) -> list[str]:
     """
     Extracts prominent hex colors from an image.
+
+    The image is resized to 128x128 for performance before processing.
 
     Args:
         img: The input image from which to extract colors.
@@ -71,6 +75,8 @@ def theme_from_image(
 ) -> Theme:
     """
     Generates a theme from an image, considering contrast, variant, and custom colors.
+
+    The image is resized to 128x128 for performance before processing.
 
     Args:
         img: The input image used to generate the theme.
