@@ -93,6 +93,8 @@
         "xtree": "cpp",
         "xutility": "cpp",
         "complex": "cpp",
-        "*.inc": "cpp"
+        "*.inc": "cpp",
+        "shared_mutex": "cpp",
+        "xstddef": "cpp"
     }
 }

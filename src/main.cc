@@ -22,62 +22,61 @@ namespace py = pybind11;
 
 PYBIND11_MODULE(_core, m)
 {
-  bind_theme(m);
-  bind_hct(m);
-  bind_dynamic_scheme_group(m);
-  bind_dynamic_scheme(m);
-  bind_tonal_palette(m);
-  bind_custom_color(m);
-  bind_custom_color_group(m);
-  bind_color_group(m);
-  bind_variant(m);
+      bind_theme(m);
+      bind_hct(m);
+      bind_dynamic_scheme_group(m);
+      bind_dynamic_scheme(m);
+      bind_tonal_palette(m);
+      bind_custom_color(m);
+      bind_custom_color_group(m);
+      bind_color_group(m);
+      bind_variant(m);
 
-  m.def("argb_from_hex",
-        &material_color_utilities::ArgbFromHex,
-        "Converts a hex color code string to its ARGB representation.",
-        py::arg("hex"));
-  m.def("hex_from_argb",
-        &material_color_utilities::RgbHexFromArgb,
-        "Returns the hexadecimal representation of a color.",
-        py::arg("argb"));
-  m.def("prominent_colors_from_array",
-        &material_color_utilities::ProminentColorsFromImage,
-        "Returns the prominent colors from an image in the shape of a 2D array.",
-        py::arg("image"), py::arg("max_colors") = 128);
-  m.def("prominent_colors_from_array_argb",
-        &material_color_utilities::ProminentColorsFromImageArgb,
-        "Returns the prominent colors from an image in the shape of a 2D array.",
-        py::arg("image"), py::arg("max_colors") = 128);
-  m.def("get_contrast_ratio",
-        &material_color_utilities::GetContrastRatio,
-        "Returns the contrast ratio of two colors.",
-        py::arg("color1"), py::arg("color2"));
-  m.def("theme_from_color",
-        &material_color_utilities::ThemeFromColor,
-        "Returns a theme from a source color.",
-        py::arg("source"),
-        py::arg("contrast_level") = 3,
-        py::arg("variant") = material_color_utilities::Variant::kVibrant,
-        py::arg("custom_colors") = std::vector<material_color_utilities::CustomColor>());
-  m.def("theme_from_argb_color",
-        &material_color_utilities::ThemeFromArgbColor,
-        "Returns a theme from a source color.",
-        py::arg("source"),
-        py::arg("contrast_level") = 3,
-        py::arg("variant") = material_color_utilities::Variant::kVibrant,
-        py::arg("custom_colors") = std::vector<material_color_utilities::CustomColor>());
-  m.def("theme_from_array",
-        &material_color_utilities::ThemeFromImage,
-        "Returns a theme from an image.",
-        py::arg("image"),
-        py::arg("contrast_level") = 3,
-        py::arg("variant") = material_color_utilities::Variant::kVibrant,
-        py::arg("custom_colors") = std::vector<material_color_utilities::CustomColor>());
-
+      m.def("argb_from_hex",
+            &material_color_utilities::ArgbFromHex,
+            "Converts a hex color code string to its ARGB representation.",
+            py::arg("hex"));
+      m.def("hex_from_argb",
+            &material_color_utilities::RgbHexFromArgb,
+            "Returns the hexadecimal representation of a color.",
+            py::arg("argb"));
+      m.def("prominent_colors_from_array",
+            &material_color_utilities::ProminentColorsFromImage,
+            "Returns the prominent colors from an image in the shape of a 2D array.",
+            py::arg("image"), py::arg("max_colors") = 128);
+      m.def("prominent_colors_from_array_argb",
+            &material_color_utilities::ProminentColorsFromImageArgb,
+            "Returns the prominent colors from an image in the shape of a 2D array.",
+            py::arg("image"), py::arg("max_colors") = 128);
+      m.def("get_contrast_ratio",
+            &material_color_utilities::GetContrastRatio,
+            "Returns the contrast ratio of two colors.",
+            py::arg("color1"), py::arg("color2"));
+      m.def("theme_from_color",
+            &material_color_utilities::ThemeFromColor,
+            "Returns a theme from a source color.",
+            py::arg("source"),
+            py::arg("contrast_level") = 0.25,
+            py::arg("variant") = material_color_utilities::Variant::kVibrant,
+            py::arg("custom_colors") = std::vector<material_color_utilities::CustomColor>());
+      m.def("theme_from_argb_color",
+            &material_color_utilities::ThemeFromArgbColor,
+            "Returns a theme from a source color.",
+            py::arg("source"),
+            py::arg("contrast_level") = 0.25,
+            py::arg("variant") = material_color_utilities::Variant::kVibrant,
+            py::arg("custom_colors") = std::vector<material_color_utilities::CustomColor>());
+      m.def("theme_from_array",
+            &material_color_utilities::ThemeFromImage,
+            "Returns a theme from an image.",
+            py::arg("image"),
+            py::arg("contrast_level") = 0.25,
+            py::arg("variant") = material_color_utilities::Variant::kVibrant,
+            py::arg("custom_colors") = std::vector<material_color_utilities::CustomColor>());
 
 #ifdef VERSION_INFO
-  m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);
+      m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);
 #else
-  m.attr("__version__") = "dev";
+      m.attr("__version__") = "dev";
 #endif
 }

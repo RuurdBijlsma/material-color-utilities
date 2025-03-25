@@ -145,3 +145,9 @@ This project is licensed under the Apache License 2.0. See the [LICENSE](https:/
 - **PyPI:** [https://pypi.org/project/material-color-utilities](https://pypi.org/project/material-color-utilities/)
 - Original C++ source: [https://github.com/material-foundation/material-color-utilities](https://github.com/material-foundation/material-color-utilities)
 - **Material Design Guidelines:** [https://material.io/design](https://material.io/design)
+
+## How to publish a release
+
+* Push to main
+* Create release on GitHub
+* Wait 30 minutes
