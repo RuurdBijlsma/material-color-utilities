@@ -316,7 +316,7 @@ def get_contrast_ratio(color1: str, color2: str) -> float:
 
 def theme_from_color(
     source: str,
-    contrast_level: int = 3,
+    contrast_level: int = 0.25,
     variant: Variant = Variant.VIBRANT,
     custom_colors: list[CustomColor] | None = None,
 ) -> Theme:
@@ -329,7 +329,7 @@ def theme_from_color(
 
     Args:
         source: The hex value of the source color.
-        contrast_level: The contrast level (default is 3).
+        contrast_level: The contrast level (default is 0.25).
         variant: The variant type (default is 0).
         custom_colors: A list of custom colors (default is an empty list).
 
@@ -341,7 +341,7 @@ def theme_from_color(
 
 def theme_from_argb_color(
     source: int,
-    contrast_level: int = 3,
+    contrast_level: int = 0.25,
     variant: Variant = Variant.VIBRANT,
     custom_colors: list[CustomColor] | None = None,
 ) -> Theme:
@@ -354,7 +354,7 @@ def theme_from_argb_color(
 
     Args:
         source: The ARGB value of the source color.
-        contrast_level: The contrast level (default is 3).
+        contrast_level: The contrast level (default is 0.25).
         variant: The variant type (default is 0).
         custom_colors: A list of custom colors (default is an empty list).
 
@@ -366,7 +366,7 @@ def theme_from_argb_color(
 
 def theme_from_array(
     image: np.ndarray,
-    contrast_level: int = 3,
+    contrast_level: int = 0.25,
     variant: Variant = Variant.VIBRANT,
     custom_colors: list[CustomColor] | None = None,
 ) -> Theme:
@@ -374,7 +374,7 @@ def theme_from_array(
 
     Args:
         image: A 1D array of ARGB values representing the image.
-        contrast_level: The contrast level (default is 3).
+        contrast_level: The contrast level (default is 0.25).
         variant: The variant type (default is 0).
         custom_colors: A list of custom colors (default is an empty list).
 

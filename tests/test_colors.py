@@ -30,15 +30,16 @@ def test_hex_from_argb():
 
 def test_theme_from_source_color():
     custom_colors = [CustomColor("#4285F4", "Google Blue", True)]
-    theme = theme_from_color("#FC03A3", 2.0, Variant.EXPRESSIVE, custom_colors)
+    theme = theme_from_color("#FC03A3", 0.15, Variant.VIBRANT, custom_colors)
     assert isinstance(theme, Theme)
     assert theme.source == "#fc03a3"
+    assert theme.schemes.light.primary == "#9f0065"
 
 
 def test_theme_from_image(assets_folder: Path):
     image = PIL.Image.open(assets_folder / "test.jpg")
     custom_colors = [CustomColor("#4285F4", "Google Blue", True)]
-    theme = theme_from_image(image, 4.0, Variant.CONTENT, custom_colors)
+    theme = theme_from_image(image, 0.5, Variant.CONTENT, custom_colors)
     assert isinstance(theme, Theme)
 
 
