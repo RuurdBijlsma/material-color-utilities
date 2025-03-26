@@ -48,12 +48,12 @@ Returns the contrast ratio of two colors.
 
 ---
 
-### `theme_from_color(source: str, contrast_level: int = 3, variant: Variant = Variant.VIBRANT, custom_colors: list[CustomColor] = []) -> Theme`
+### `theme_from_color(source: str, contrast_level: float = 0.25, variant: Variant = Variant.VIBRANT, custom_colors: list[CustomColor] = []) -> Theme`
 Returns a theme from a source color.
 
 - **Parameters**:
   - `source`: A string representing the hex color code (e.g., `"#4285F4"`).
-  - `contrast_level`: An optional integer specifying the contrast level (default is `3`).
+  - `contrast_level`: An optional float specifying the contrast level (default is `0.25`).
   - `variant`: An optional `Variant` specifying the color variant (default is `Variant.kVibrant`).
   - `custom_colors`: An optional list of `CustomColor` objects to apply (default is an empty list).
 
@@ -62,7 +62,7 @@ Returns a theme from a source color.
 
 ---
 
-### `theme_from_image(image: PIL.Image.Image, contrast_level: int = 3, variant: Variant = Variant.kVibrant, custom_colors: list[CustomColor] = []) -> Theme`
+### `theme_from_image(image: PIL.Image.Image, contrast_level: float = 0.25, variant: Variant = Variant.kVibrant, custom_colors: list[CustomColor] = []) -> Theme`
 Returns a theme from an image.
 
 - **Parameters**:
