@@ -62,16 +62,24 @@ py::dict DynamicSchemeGroupDict(const material_color_utilities::DynamicSchemeGro
 py::dict DynamicSchemeDict(const material_color_utilities::DynamicScheme &d)
 {
     return py::dict(
+        // Scheme vars
         "source_color_hct"_a = HctDict(d.source_color_hct),
         "variant"_a = VariantToString(d.variant),
         "is_dark"_a = d.is_dark,
         "contrast_level"_a = d.contrast_level,
+        // Pallettes
         "primary_palette"_a = TonalPaletteDict(d.primary_palette),
         "secondary_palette"_a = TonalPaletteDict(d.secondary_palette),
         "tertiary_palette"_a = TonalPaletteDict(d.tertiary_palette),
         "neutral_palette"_a = TonalPaletteDict(d.neutral_palette),
         "neutral_variant_palette"_a = TonalPaletteDict(d.neutral_variant_palette),
         "error_palette"_a = TonalPaletteDict(d.error_palette),
+        // Colors
+        "background"_a = d.HexBackground(),
+        "surface"_a = d.HexSurface(),
+        "surface_dim"_a = d.HexSurfaceDim(),
+        "surface_bright"_a = d.HexSurfaceBright(),
+        "surface_container_lowest"_a = d.HexSurfaceContainerLowest(),
         "surface_container_low"_a = d.HexSurfaceContainerLow(),
         "surface_container"_a = d.HexSurfaceContainer(),
         "surface_container_high"_a = d.HexSurfaceContainerHigh(),
@@ -132,7 +140,7 @@ py::dict TonalPaletteDict(const material_color_utilities::TonalPalette &t)
             "70"_a = t.GetHex(70),
             "80"_a = t.GetHex(80),
             "90"_a = t.GetHex(90)));
-        "key_color"_a = HctDict(t.get_key_color());
+    "key_color"_a = HctDict(t.get_key_color());
 }
 
 py::dict HctDict(const material_color_utilities::Hct &h)

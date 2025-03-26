@@ -53,7 +53,7 @@ from material_color_utilities import (
 #### From a Source Color
 
 ```python
-theme = theme_from_color("#FC03A3", 3.0, Variant.EXPRESSIVE)
+theme = theme_from_color("#FC03A3", 0, Variant.EXPRESSIVE)
 # now apply the theme somewhere
 # Example, assuming dark theme:
 button.color = theme.schemes.dark.primary
@@ -72,7 +72,7 @@ from PIL import Image
 image = Image.open("path/to/image.jpg")
 # You can *optionally* pass a list of custom colors to generate palettes that harmonize with the source color.
 custom_colors = [CustomColor("#4285F4", "Google Blue", True)]
-theme = theme_from_image(image, 4.0, Variant.CONTENT, custom_colors)
+theme = theme_from_image(image, 0, Variant.CONTENT, custom_colors)
 ```
 
 #### Theme to dict
