@@ -34,6 +34,7 @@ def test_theme_from_source_color():
     assert isinstance(theme, Theme)
     assert theme.source == "#fc03a3"
     assert theme.schemes.light.primary == "#9f0065"
+    assert theme.schemes.dark.background == "#1c1015"
 
 
 def test_theme_from_image(assets_folder: Path):

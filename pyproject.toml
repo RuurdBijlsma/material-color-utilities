@@ -1,6 +1,6 @@
 [project]
 name = "material-color-utilities"
-version = "0.2.3"
+version = "0.2.4"
 description = "Theme color library for Material You."
 readme = "README.md"
 license = { file = "LICENSE" }

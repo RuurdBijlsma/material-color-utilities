@@ -70,6 +70,7 @@ class DynamicScheme:
     variant: Variant
     is_dark: bool
     contrast_level: float
+
     primary_palette: TonalPalette
     secondary_palette: TonalPalette
     tertiary_palette: TonalPalette
@@ -77,6 +78,11 @@ class DynamicScheme:
     neutral_variant_palette: TonalPalette
     error_palette: TonalPalette
 
+    background: str
+    surface: str
+    surface_dim: str
+    surface_bright: str
+    surface_container_lowest: str
     surface_container_low: str
     surface_container: str
     surface_container_high: str

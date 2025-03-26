@@ -352,6 +352,7 @@ namespace material_color_utilities
   {
     return MaterialDynamicColors::OnTertiaryFixedVariant().GetArgb(*this);
   }
+
   std::string DynamicScheme::HexPrimaryPaletteKeyColor() const
   {
     return MaterialDynamicColors::PrimaryPaletteKeyColor().GetHex(*this);

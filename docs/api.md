@@ -67,7 +67,7 @@ Returns a theme from an image.
 
 - **Parameters**:
   - `image`: A `PIL.Image.Image` object representing the image.
-  - `contrast_level`: An optional integer specifying the contrast level (default is `3`).
+  - `contrast_level`: An optional integer specifying the contrast level (default is `0.25`).
   - `variant`: An optional `Variant` specifying the color variant (default is `Variant.kVibrant`).
   - `custom_colors`: An optional list of `CustomColor` objects to apply (default is an empty list).
 
@@ -172,6 +172,11 @@ Represents a dynamic color scheme generated from a source color.
   - `tertiary_palette: TonalPalette`: The tertiary color palette.
   - `neutral_palette: TonalPalette`: The neutral color palette.
   - `error_palette: TonalPalette`: The error color palette.
+  - `background: str`: Background color
+  - `surface: str`: Surface color.
+  - `surface_dim: str`: Dim surface color.
+  - `surface_bright: str`: Bright surface color.
+  - `surface_container_lowest: str`: The lowest surface container color.
   - `surface_container_low: str`: The low surface container color.
   - `surface_container: str`: The surface container color.
   - `surface_container_high: str`: The high surface container color.
