@@ -316,7 +316,7 @@ def get_contrast_ratio(color1: str, color2: str) -> float:
 
 def theme_from_color(
     source: str,
-    contrast_level: int = 0.25,
+    contrast_level: float = 0.25,
     variant: Variant = Variant.VIBRANT,
     custom_colors: list[CustomColor] | None = None,
 ) -> Theme:
@@ -341,7 +341,7 @@ def theme_from_color(
 
 def theme_from_argb_color(
     source: int,
-    contrast_level: int = 0.25,
+    contrast_level: float = 0.25,
     variant: Variant = Variant.VIBRANT,
     custom_colors: list[CustomColor] | None = None,
 ) -> Theme:
@@ -366,7 +366,7 @@ def theme_from_argb_color(
 
 def theme_from_array(
     image: np.ndarray,
-    contrast_level: int = 0.25,
+    contrast_level: float = 0.25,
     variant: Variant = Variant.VIBRANT,
     custom_colors: list[CustomColor] | None = None,
 ) -> Theme:
