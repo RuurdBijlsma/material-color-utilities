@@ -1,0 +1,43 @@
+name: Check pyproject.toml Version
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Needed to fetch full history
+
+      - name: Compare pyproject.toml version with main
+        run: |
+          echo "Fetching main branch..."
+          git fetch origin main
+
+          echo "Extracting version from main branch..."
+          MAIN_VERSION=$(git show origin/main:pyproject.toml | grep -E 'version\s*=' | head -n1 | cut -d '"' -f2)
+          echo "Main version: $MAIN_VERSION"
+
+          echo "Extracting version from PR branch..."
+          PR_VERSION=$(grep -E 'version\s*=' pyproject.toml | head -n1 | cut -d '"' -f2)
+          echo "PR version: $PR_VERSION"
+
+          # Ensure both versions were found
+          if [ -z "$MAIN_VERSION" ] || [ -z "$PR_VERSION" ]; then
+            echo "Error: Could not extract version from one of the branches."
+            exit 1
+          fi
+
+          # Compare using sort -V which handles version numbers correctly
+          lowest=$(echo -e "$MAIN_VERSION\n$PR_VERSION" | sort -V | head -n1)
+          if [ "$lowest" = "$MAIN_VERSION" ] && [ "$MAIN_VERSION" != "$PR_VERSION" ]; then
+            echo "PR version is higher than main version."
+          else
+            echo "Error: PR version must be higher than main version."
+            exit 1
+          fi
