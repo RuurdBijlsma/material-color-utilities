@@ -1,5 +1,5 @@
 from __future__ import annotations
-from enum import StrEnum
+from enum import StrEnum, auto
 from typing import Any
 
 import numpy as np
@@ -221,15 +221,15 @@ class ColorGroup:
 class Variant(StrEnum):
     """Each variant is a set of design decisions on the assignment of color values from tonal palettes to color roles."""
 
-    MONOCHROME: str
-    NEUTRAL: str
-    TONALSPOT: str
-    VIBRANT: str
-    EXPRESSIVE: str
-    FIDELITY: str
-    CONTENT: str
-    RAINBOW: str
-    FRUITSALAD: str
+    MONOCHROME = auto()
+    NEUTRAL = auto()
+    TONALSPOT = auto()
+    VIBRANT = auto()
+    EXPRESSIVE = auto()
+    FIDELITY = auto()
+    CONTENT = auto()
+    RAINBOW = auto()
+    FRUITSALAD = auto()
 
 
 def argb_from_hex(hex: str) -> int:
