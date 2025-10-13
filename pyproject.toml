@@ -1,6 +1,6 @@
 [project]
 name = "material-color-utilities"
-version = "0.2.5"
+version = "0.2.6"
 description = "Theme color library for Material You."
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -9,7 +9,7 @@ authors = [
 ]
 requires-python = ">=3.11"
 dependencies = [
-    "numpy>=2.3.3",
+    "numpy>=2.2.6",
     "pillow>=11.1.0",
 ]
 
