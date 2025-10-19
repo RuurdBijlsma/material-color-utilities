@@ -38,14 +38,14 @@ def test_theme_from_source_color():
 
 
 def test_theme_from_image(assets_folder: Path):
-    image = PIL.Image.open(assets_folder / "test.jpg")
+    image = PIL.Image.open(assets_folder / "etna.jpg")
     custom_colors = [CustomColor("#4285F4", "Google Blue", True)]
-    theme = theme_from_image(image, 0.5, Variant.CONTENT, custom_colors)
+    theme = theme_from_image(image, 0.5, Variant.VIBRANT, custom_colors)
     assert isinstance(theme, Theme)
 
 
 def test_prominent_colors_from_image(assets_folder: Path):
-    image = PIL.Image.open(assets_folder / "test.jpg")
+    image = PIL.Image.open(assets_folder / "etna.jpg")
     colors = prominent_colors_from_image(image, 5)
     assert isinstance(colors, list)
     assert len(colors) <= 5
